@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import bg from '../Images/bg-login.jpg';
-import logo from '../Images/logo.png';
+import lfbg from '../Images/bg-login.jpg';
+import lflogo from '../Images/logo.png';
 import citlogo from '../Images/citlogo.png';
 import '../CSS/Login.css';
 
@@ -40,46 +40,37 @@ function Login() {
 
   return (
     <>
-      <div className="lgn-components">
-        <div className="lgn-leftside">
-          <img src={bg} alt="lgb-bg" style={{
-            filter: "blur(8px)",
-            width: "100%",
-            height: "100vh"
-          }} />
-          <img src={logo} alt="company-logo" style={{
-            position: "absolute",
-            width: "600px",
-            left: "10%",
-            top: "15%"
-          }} />
-          <h1 className="lgn-title">STUDENT RENTALS</h1>
-          <h2 className="lgn-title">MADE4EASY</h2>
+      <div className="lgn-container">
+        <div className="lf-side">
+          <img 
+            src={lfbg} 
+            alt="lfbg" 
+            style={{
+              filter: "blur(8px)",
+              width: "100%",
+              height: "100vh"
+            }}/>
+          <img 
+            src={lflogo} 
+            alt="lflogo" 
+            style={{
+              position: "absolute",
+              width: "600px",
+              left: "10%",
+              top: "15%"
+            }}/>
+          <h1>STUDENT RENTALS:</h1>
+          <h2>MADE4EASY</h2>
         </div>
 
-        <div className="lgn-rightside">
-          <Link to='/'
-            style={{
-              textDecoration: "none",
-              fontFamily: "Nunito, sans-serif",
-              color: "black",
-              fontWeight: "bold"
-            }}>
-            <div className="back-container">
-              <box-icon name='arrow-back' size='md'></box-icon>
-              <p className="back">BACK</p>
+        <div className="rgt-side">
+          <Link to='/'>
+            <div className="rgt-side-back">
+              <box-icon name='arrow-back' size='md' style={{ margin: '20px' }}></box-icon><p>BACK</p>
             </div>
           </Link>
-          <div className="lgn-container">
-            <img
-              src={citlogo}
-              alt="citlogo"
-              style={{
-                width: "150px",
-                paddingTop: "50px",
-                position: "absolute",
-                top: '15%'
-              }} />
+          <div className="rgt-form-container">
+            <img src={citlogo} alt="citlogo" />
             <p>Sign In</p>
             <input
               type="text"
@@ -96,11 +87,13 @@ function Login() {
             <button onClick={() => handleLogin(false)}>Login</button>
             <hr />
             <button onClick={() => handleLogin(true)}>Login as Admin</button>
-            <div>
-              <h3>Don't Have an Account yet?
-                <Link to='/signup'><a href="#"> Signup</a></Link>
-              </h3>
-            </div>
+            <h3>Don’t have an account?</h3>
+            <Link to='/signup' style={{
+              color: 'black',
+              textDecoration: 'underline',
+              fontSize: '18px'
+            }}>Sign up
+            </Link>
           </div>
         </div>
       </div>
