@@ -1,5 +1,6 @@
 import React from "react";
 import '../CSS/Login.css'
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import bg from '../Images/bg-login.jpg'
 import logo from '../Images/logo.png'
 import citlogo from '../Images/citlogo.png'
@@ -25,10 +26,12 @@ function Login (){
       </div>
 
       <div className="lgn-rightside">
+        <Link to='/'>
         <div className="back-container">
           <box-icon name='arrow-back' size='md'></box-icon>
           <p>BACK</p>
         </div>
+        </Link>
         <div className="lgn-container">
           <img src={citlogo} alt="citlogo" style={{
             width: "150px",

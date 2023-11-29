@@ -1,0 +1,110 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.admin-container {
+  display: flex;
+}
+
+.lft-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  height: 91vh;
+}
+
+.lft-section h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 50px;
+  font-weight: 900;
+  font-weight: 800;
+  margin: 100px 0px 100px 0px;
+  color: gray;
+}
+
+.lft-section .pic-container {
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  background-color: gray;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.lft-section .pic-container img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+
+.btn-container {
+  display: flex;
+  gap: 30px;
+}
+
+.btn-container button,
+.btn-container label {
+  padding: 10px 40px;
+  background-color: #F28500;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer;
+}
+
+.btn-container button:nth-child(2) {
+  background-color: gray;
+}
+
+.rgt-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 91vh;
+  gap: 100px;
+}
+
+.rgt-section .add-container {
+  display: flex;
+  flex-direction: column;
+  align-self: baseline;
+  justify-content: center;
+  margin-top: 200px;
+}
+
+.add-container p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  color: gray;
+  margin-bottom: 30px;
+}
+
+.add-container input {
+  padding: 10px;
+  width: 300px;
+  margin: 20px;
+  border-radius: 20px;
+  border: solid 1px gray;
+}
+
+.add-container button {
+  padding: 10px;
+  width: 200px;
+  border: none;
+  background-color: #F28500;
+  border-radius: 20px;
+  color: white;
+  margin: 20px;
+}
+
+.btn-post {
+  display: flex;
+  align-self: baseline;
+  align-items: center;
+}
