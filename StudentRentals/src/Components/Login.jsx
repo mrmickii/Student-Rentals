@@ -42,10 +42,7 @@ function Login (){
           <button>Login</button>
           <hr class="solid"></hr>
           <button>Login as Admin</button>
-          <div><h3>Don't Have an Account yet?<a href="#"
-          style={{
-
-          }}> Signup</a></h3></div>
+          <div><h3>Don't Have an Account yet?<a href="#"> Signup</a></h3></div>
         </div>
       </div>
     </div>

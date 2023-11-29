@@ -1,0 +1,55 @@
+/* Header.css */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 10%;
+  background-color: #3D1111;
+}
+
+.nh {
+  color: white;
+  font-family: 'Nunito Sans', sans-serif;
+  text-decoration: none;
+  margin: 20px;
+  transition: color 0.3s ease; /* Add transition for a smooth color change */
+}
+
+.container {
+  margin-left: 200px;
+}
+
+.nh:hover {
+  color: #f28500;
+}
+
+.nh-side {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 250px;
+  margin: 20px;
+}
+
+.nh-side button {
+  padding: 10px;
+  width: 100px;
+  background-color: #f28500;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.profile-container {
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+}

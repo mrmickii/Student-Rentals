@@ -4,7 +4,7 @@ import bg from '../Images/bg-login.jpg'
 import logo from '../Images/logo.png'
 import citlogo from '../Images/citlogo.png'
 
-function Login (){
+function Signup (){
   return (
     <>
     <div className="lgn-components">
@@ -56,4 +56,4 @@ function Login (){
   )
 }
 
-export default Login
+export default Signup
