@@ -34,7 +34,7 @@ function Login() {
       }
     } catch (error) {
       // Handle login failure
-      console.error('Login failed:', error.response?.data || error.message);
+      console.error('Login failed:', error.response?.data || error.message);  
     }
   };
 

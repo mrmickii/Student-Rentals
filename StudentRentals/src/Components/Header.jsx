@@ -1,6 +1,7 @@
 import React from "react";
 import '../CSS/Header.css'
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {HashLink as Link } from 'react-router-hash-link'
 import logo from '../Images/logo.png'
 import profile from '../Images/citlogo.png'
 
@@ -17,9 +18,15 @@ function Header(){
         }}/>
       </div>
       <div className="nh container">
-        <a className="nh" href="">Home</a>
-        <a className="nh" href="">Service</a>
-        <a className="nh" href="">Contact Us</a>
+        <Link smooth to='/'>
+          <a className="nh" href="">Home</a>
+        </Link >
+        <Link smooth to='#forthsection'>
+          <a className="nh" href="">Service</a>
+        </Link >
+        <Link smooth to='#fifthsection'>
+          <a className="nh" href="">Contact Us</a>
+        </Link >
       </div>
       <div className="nh-side">
         <Link to='/login'><button>Login</button></Link>
