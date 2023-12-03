@@ -11,6 +11,7 @@ function Header(){
 
   return(
     <header>
+      <Link smooth to="#firstsection">
       <div className="logo-container">
         <img 
         src={logo} 
@@ -19,21 +20,22 @@ function Header(){
           width: "80px",
           margin: "20px"
         }}/>
-      </div>  
+      </div>
+      </ Link>
 
       <div className="nh container">
         <ul>
-          <Link smooth to='/' style={{textDecoration: 'none'}}>
+          <Link smooth to='#firstsection' style={{textDecoration: 'none'}}>
             <li className="nh" href="">Home</li>
           </Link >
-          <Link smooth to='#forthsection' style={{textDecoration: 'none'}}>
-            <li className="nh" href="" >Service</li>
-          </Link >
           <Link smooth to='#thirdsection' style={{textDecoration: 'none'}}>
-            <li className="nh" href="">About Us</li>
+            <li className="nh" href="" >About</li>
+          </Link >
+          <Link smooth to='#forthsection' style={{textDecoration: 'none'}}>
+            <li className="nh" href="">Service</li>
           </Link >
           <Link smooth to='#fifthsection' style={{textDecoration: 'none'}}>
-            <li className="nh" href="">Contact Us</li>
+            <li className="nh" href="">Contact</li>
           </Link >
         </ul>
       </div>

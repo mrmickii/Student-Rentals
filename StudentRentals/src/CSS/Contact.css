@@ -24,6 +24,7 @@
   height: 50%;
   width: 30%;
   box-shadow: 3px 3px 10px black;
+  transition: margin-top 0.5s;
 }
 .devs:hover{
   box-shadow: 5px 5px 10px #F28500;

@@ -202,10 +202,7 @@ function Signup() {
             <button onClick={handleSignup}>Continue</button>
             <div style={{marginTop: '0'}}>
               <h3>
-                By signing up, I have read and agree to{" "}
-                <a href="#">
-                  Terms and Condition 
-                </a>
+                Already have an account? <Link to='/login'>Login</Link>
               </h3>
             </div>
           </div>

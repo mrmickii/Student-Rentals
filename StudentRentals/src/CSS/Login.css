@@ -71,6 +71,12 @@
   border: none;
   border-radius: 10px;
   margin: 20px;
+  transition: background-color 0.5s, color 0.5s, border 0.5s;
+}
+.lgn-container button:hover{
+  background-color: white;
+  color: #3D1111;
+  border: solid 1px #3D1111;
 }
 .solid {
   margin: 10px;
@@ -79,7 +85,7 @@
 }
 .password-toggle {
   position: absolute;
-  top: 57.5%;
+  top: 60%;
   right: 30%;
   cursor: pointer;
 }

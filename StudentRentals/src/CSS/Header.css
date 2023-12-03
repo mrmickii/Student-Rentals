@@ -11,6 +11,9 @@ header {
   width: 100%;
   height: 10vh;
   background-color: #3D1111;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .nh {
@@ -20,19 +23,22 @@ header {
   margin: 20px;
   transition: color 0.3s ease;
 }
+ul{
+  margin-top: 0;
+  margin-bottom: 0;
+}
 .container{
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: 200px;
-
 }
+
 .container ul{
   list-style-type: none;
   display: flex;
   text-align: center;
 }
-
 
 .container li:hover {
   color: #f28500;
@@ -55,6 +61,12 @@ header {
   border: none;
   border-radius: 20px;
   cursor: pointer;
+  transition: background-color 0.5s, color 0.5s, border 0.5s;
+}
+.nh-side button:hover{
+  background-color: #3D1111;
+  border: solid 1px #f28500;
+  color: #f28500;
 }
 
 .profile-container {

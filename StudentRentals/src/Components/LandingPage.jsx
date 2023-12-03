@@ -26,8 +26,7 @@ function LandingPage() {
 
       <div className="section secondsection" id="secondsection">
         <div className="ssh-text">
-          <h3>Our Properties</h3>
-          <h2>Our Featured Properties</h2>
+          <h1>OUR PROPERTIES</h1>
           
         </div>
       </div>

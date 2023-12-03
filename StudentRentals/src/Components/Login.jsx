@@ -121,8 +121,7 @@ function Login() {
             <hr />
             <button onClick={() => handleAdminLogin(true)}>Login as Admin</button>
             <div>
-              <h3>Don't Have an Account yet?
-                <Link to='/signup'><a href="#"> Signup</a></Link>
+              <h3>Don't Have an Account yet? <Link to='/signup'>Signup</Link>
               </h3>
             </div>
           </div>

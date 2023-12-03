@@ -11,15 +11,17 @@ const address = 'Natalio B. Bacalso Ave, Cebu City, 6000 Cebu'
 function Footer(){
   return(
     <footer>
-      <div>
-        <img 
-          src={logo} 
-          alt="company-logo"
-          style={{
-            width: 'auto',
-            height: '100px'
-          }} />
-      </div>
+      <Link smooth to ='#firstsection'>
+        <div>
+          <img 
+            src={logo} 
+            alt="company-logo"
+            style={{
+              width: 'auto',
+              height: '100px'
+            }} />
+        </div>
+      </Link>
       <div className="fsc-container">
         <div className="footer-sec">
           <h1>COMPANY</h1>
