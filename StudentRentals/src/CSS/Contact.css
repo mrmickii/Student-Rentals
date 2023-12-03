@@ -23,15 +23,19 @@
   margin: 20px 20px 0px 20px;
   height: 50%;
   width: 30%;
+  box-shadow: 3px 3px 10px black;
+}
+.devs:hover{
+  box-shadow: 5px 5px 10px #F28500;
+  margin-top: 5px;
 }
 .devs-info{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Arapey', serif;
   font-size: 30px;
   font-weight: bold;
-  color: #3D1111;
 }
 .devs-info button{
   margin-top: 20px;
@@ -39,7 +43,6 @@
   border: solid 1px #F28500;
   border-radius: 10px;
   background-color: white;
-  color: #3D1111;
   font-family: 'Nunito Sans', sans-serif;
   font-size: 15px;
   font-weight: bold;
@@ -63,7 +66,7 @@
   text-align: center;
   width: 25%;
   height: 100%;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 20px;
+  font-family: 'Arapey', serif;
+  font-size: 25px;
   font-weight: bold;
 }

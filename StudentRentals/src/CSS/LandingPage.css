@@ -41,32 +41,27 @@ html, body {
 .fsh-text {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 50px;
   color: white;
   align-items: center;
-  padding: 100px 0px 0px 0px;
+  padding: 50px 0px 0px 0px;
 }
-.fsh-text h3, .fsh-text h2{
-  font-family: "Nunito Sans", sans-serif;
-  font-weight: 700;
+.fsh-text h4, .fsh-text h1{
+  font-family: 'Sancreek', serif; 
 }
-
 
 .fifthsection{
   height: 70vh;
 }
 
 .ffsh-text{
-  color: #3D1111;
   text-align: center;
   margin-top: 50px;
   padding: 0px 50px;
   font-size: 500px;
 }
-.ffsh-text h3, .ffsh-text h2{
-  font-family: "Nunito Sans", sans-serif;
-  font-weight: "bold";
-  font-weight: 700;
+.ffsh-text h1{
+  font-family: 'Sancreek', serif;
 }
 .ffsh-text h3{
   font-size: 35px;

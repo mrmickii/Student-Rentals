@@ -4,6 +4,7 @@ import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import Contact  from './Contact'
 import Service from '../Components/Service'
+import AboutUs from "../Components/AboutUs";
 import bglp from '../Images/firstpagebg.png';
 import { Link } from 'react-scroll'
 
@@ -32,15 +33,13 @@ function LandingPage() {
       </div>
 
       <div className="section thirdsection" id="thirdsection">
-        <p className="tdh-text">More Choices For You</p>
-
-        
+        <AboutUs />   
       </div>
 
       <div className="section forthsection" id="forthsection"> 
         <div className="fsh-text">
-          <h3>Our Features</h3>
-          <h2>Why Choose Us?</h2>
+          <h1>OUR FEATURES</h1>
+          <h4>Why Choose Us?</h4>
         </div>
         <div className="feature-container">
         <Service 
@@ -68,8 +67,7 @@ function LandingPage() {
 
       <div className="section fifthsection" id="fifthsection">
         <div className="ffsh-text">
-            <h3>OUR TEAM</h3>
-            <h5>Meet the dedicated team behind STUDENTRENTALS. Our experienced professionals are committed to ensuring that you have a positive and memorable living experience. Whether you have questions about our properties or need assistance during your stay, our team is here to help.</h5>
+            <h1>OUR TEAM</h1>
         </div>
           <Contact />
       </div>

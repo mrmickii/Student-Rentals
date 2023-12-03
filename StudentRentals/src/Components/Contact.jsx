@@ -20,8 +20,7 @@ function AboutUs(){
               width: '200px',
               borderRadius: '50%',
               margin: '30px',
-              objectFit: 'cover',
-              boxShadow: '0px 0px 10px #F28500'
+              objectFit: 'cover'
             }}
           />
           <div className="devs-info">
@@ -51,8 +50,7 @@ function AboutUs(){
               width: '200px',
               borderRadius: '50%',
               margin: '30px',
-              objectFit: 'cover',
-              boxShadow: '0px 0px 10px #F28500'
+              objectFit: 'cover'
             }}
           />
           <div className="devs-info">
@@ -82,8 +80,7 @@ function AboutUs(){
               width: '200px',
               borderRadius: '50%',
               margin: '30px',
-              objectFit: 'cover',
-              boxShadow: '0px 0px 10px #F28500'
+              objectFit: 'cover'
             }}
           />
           <div className="devs-info">

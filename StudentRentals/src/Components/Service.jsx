@@ -7,8 +7,7 @@ function Service(props){
     <div className="card">
       <box-icon 
         name={props.svg} 
-        size='lg' 
-        color='#3D1111'>
+        size='lg' >
       </box-icon>
       <h3>{props.title}</h3>
       <p>{props.description}</p>
