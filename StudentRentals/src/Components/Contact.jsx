@@ -1,9 +1,8 @@
 import React from "react";
-import '../CSS/AboutUs.css'
-import carlo from '../Images/carlo.jpg'
+import '../CSS/Contact.css'
 import trixie from '../Images/trixie.png'
 import ken from '../Images/ken.jpg'
-import caloy from '../Images/sada.jpg'
+import carlo from '../Images/caloy.jpg'
 
 const num = '9123456789'
 
@@ -14,11 +13,11 @@ function AboutUs(){
       <div className="au-card">
       <div className="devs">
           <img 
-            src={caloy} 
+            src={carlo} 
             alt="carlo"
             style={{
-              height: '250px',
-              width: '250px',
+              height: '200px',
+              width: '200px',
               borderRadius: '50%',
               margin: '30px',
               objectFit: 'cover',
@@ -48,8 +47,8 @@ function AboutUs(){
             src={trixie} 
             alt="trixie"
             style={{
-              height: '250px',
-              width: '250px',
+              height: '200px',
+              width: '200px',
               borderRadius: '50%',
               margin: '30px',
               objectFit: 'cover',
@@ -79,8 +78,8 @@ function AboutUs(){
             src={ken} 
             alt="ken"
             style={{
-              height: '250px',
-              width: '250px',
+              height: '200px',
+              width: '200px',
               borderRadius: '50%',
               margin: '30px',
               objectFit: 'cover',
@@ -107,16 +106,18 @@ function AboutUs(){
         
         <div className="motto">
           <div className="motto-container">
-          <p>"A LITTLE PROGRESS EACH DAY ADDS UP TO BIG RESULTS"</p>
+          <p>"A little progress each day adds up to big results."</p>
           <h5>- Sarya Nani</h5>
           </div>
           <div className="motto-container">
-          <p>"A LITTLE PROGRESS EACH DAY ADDS UP TO BIG RESULTS"</p>
-          <h5>- Sarya Nani</h5>
+          <p>"Nothing is impossible, the word itself says I'm possible."</p>
+          <h5>- Audrey Hepburn</h5>
           </div>
           <div className="motto-container">
-          <p>"A LITTLE PROGRESS EACH DAY ADDS UP TO BIG RESULTS"</p>
-          <h5>- Sarya Nani</h5>
+          <p>
+            "Coding is not just about commands and syntax; it's a creative process that brings ideas to life"
+          </p>
+          <h5>- ChatGPT</h5>
           </div>
         </div>
       </div>

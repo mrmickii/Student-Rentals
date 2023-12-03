@@ -8,13 +8,13 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: auto; /* Ensure that the body has scrolling capabilities */
+  overflow: auto;
 }
 
 .section {
   width: 100%;
   height: 100vh;
-  scroll-behavior: smooth; /* Enable smooth scrolling for the whole page */
+  scroll-behavior: smooth;
 }
 
 .ssh-text {
@@ -37,23 +37,42 @@ html, body {
 .forthsection {
   background-color: #3D1111;
 }
+
 .fsh-text {
   display: flex;
   flex-direction: column;
   gap: 10px;
   color: white;
   align-items: center;
-  padding: 30px;
-  font-family: "Nunito", sans-serif;
+  padding: 100px 0px 0px 0px;
 }
+.fsh-text h3, .fsh-text h2{
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+}
+
+
 .fifthsection{
   height: 70vh;
 }
+
 .ffsh-text{
   color: #3D1111;
   text-align: center;
   margin-top: 50px;
-  font-family: "Nunito", sans-serif;
-  font-weight: bold;
-  line-height: 1.5;
+  padding: 0px 50px;
+  font-size: 500px;
+}
+.ffsh-text h3, .ffsh-text h2{
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: "bold";
+  font-weight: 700;
+}
+.ffsh-text h3{
+  font-size: 35px;
+}
+.feature-container{
+  display: flex;
+  width: 100%;
+  padding-top: 100px;
 }

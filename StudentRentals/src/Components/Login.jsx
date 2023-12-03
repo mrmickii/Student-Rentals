@@ -5,36 +5,56 @@ import bg from '../Images/bg-login.jpg';
 import logo from '../Images/logo.png';
 import citlogo from '../Images/citlogo.png';
 import '../CSS/Login.css';
+import { FiEye, FiEyeOff } from 'react-icons/fi';
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Get the navigate function
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
-  const handleLogin = async (isAdmin) => {
+  const handleLogin = async () => {
+    try {
+      const endpoint = 'http://localhost:8080/studentrentals/login';
+  
+      const response = await axios.post(endpoint, null, {
+        params: { username, password }
+      });
+  
+      if (response.data) {
+        console.log('Login successful:', response.data);
+        navigate('/');
+      } else {
+        console.error('Login failed: Invalid username or password');
+      }
+    } catch (error) {
+      console.error('Login failed:', error.response?.data || error.message);
+    }
+  };
+
+  const handleAdminLogin = async (isAdmin) => {
     try {
       const endpoint = isAdmin
         ? 'http://localhost:8080/studentrentals/admin'
-        : 'http://localhost:8080/studentrentals'; // Adjusted the URLs
+        : 'http://localhost:8080/studentrentals';
 
       const response = await axios.post(endpoint, { username, password });
 
-      // Check if response.data is defined before accessing its properties
       if (response.data) {
-        // Handle successful login, e.g., store the token in local storage
         console.log('Login successful:', response.data);
 
         if (isAdmin) {
-          navigate('/admin'); // Use the navigate function to navigate to '/admin'
-        } else {
-          // Handle redirection for regular user if needed
+          navigate('/admin');
         }
       } else {
         console.error('Login failed: Response data is undefined');
       }
     } catch (error) {
-      // Handle login failure
-      console.error('Login failed:', error.response?.data || error.message);  
+      console.error('Login failed:', error.response?.data || error.message);
     }
   };
 
@@ -63,13 +83,14 @@ function Login() {
               textDecoration: "none",
               fontFamily: "Nunito, sans-serif",
               color: "black",
-              fontWeight: "bold"
+              fontWeight: "bold",
             }}>
             <div className="back-container">
               <box-icon name='arrow-back' size='md'></box-icon>
-              <p className="back">BACK</p>
+              <p className="back">Back</p>
             </div>
           </Link>
+          
           <div className="lgn-container">
             <img
               src={citlogo}
@@ -78,7 +99,7 @@ function Login() {
                 width: "150px",
                 paddingTop: "50px",
                 position: "absolute",
-                top: '15%'
+                top: '5%'
               }} />
             <p>Sign In</p>
             <input
@@ -87,15 +108,18 @@ function Login() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button onClick={() => handleLogin(false)}>Login</button>
+             <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <span className="password-toggle" onClick={togglePasswordVisibility}>
+                {showPassword ? <FiEyeOff /> : <FiEye />}
+              </span>
+            <button onClick={() => handleLogin(true)}>Login</button>
             <hr />
-            <button onClick={() => handleLogin(true)}>Login as Admin</button>
+            <button onClick={() => handleAdminLogin(true)}>Login as Admin</button>
             <div>
               <h3>Don't Have an Account yet?
                 <Link to='/signup'><a href="#"> Signup</a></Link>

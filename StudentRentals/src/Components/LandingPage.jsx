@@ -2,7 +2,8 @@ import React, { useRef } from "react";
 import '../CSS/LandingPage.css';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
-import AboutUs  from '../Components/AboutUs'
+import Contact  from './Contact'
+import Service from '../Components/Service'
 import bglp from '../Images/firstpagebg.png';
 import { Link } from 'react-scroll'
 
@@ -26,11 +27,14 @@ function LandingPage() {
         <div className="ssh-text">
           <h3>Our Properties</h3>
           <h2>Our Featured Properties</h2>
+          
         </div>
       </div>
 
       <div className="section thirdsection" id="thirdsection">
         <p className="tdh-text">More Choices For You</p>
+
+        
       </div>
 
       <div className="section forthsection" id="forthsection"> 
@@ -38,14 +42,36 @@ function LandingPage() {
           <h3>Our Features</h3>
           <h2>Why Choose Us?</h2>
         </div>
+        <div className="feature-container">
+        <Service 
+          svg='award'
+          title='Quality Accommodations'
+          description='We take pride in offering high-quality, well-maintained apartments and dorms. Our properties are equipped with modern amenities to enhance your living experience, providing a comfortable and productive environment for your academic pursuits.'  
+        />
+        <Service 
+          svg='money'
+          title='Affordability'
+          description="We believe that student living should be affordable without compromising on quality. Our rental options are competitively priced to fit within a student's budget, allowing you to focus on your studies rather than worrying about excessive living expenses."
+        />
+        <Service 
+          svg='check-shield'
+          title='Transparent and Reliable'
+          description='We value transparency and reliability in all our dealings. From the initial inquiry to the move-in process, we aim to provide clear information and reliable services. Your satisfaction and peace of mind are our top priorities.'  
+        />
+        <Service 
+          svg='bullseye'
+          title='Community-Focused'
+          description="We are not just about renting spaces; we're about building communities. Our housing options are designed to foster a sense of belonging and encourage social interactions among students."  
+        />
+        </div>
       </div>
 
       <div className="section fifthsection" id="fifthsection">
         <div className="ffsh-text">
-            <h3>Expertise Is Here</h3>
-            <h2>Our Developers</h2>
-          </div>
-          <AboutUs />
+            <h3>OUR TEAM</h3>
+            <h5>Meet the dedicated team behind STUDENTRENTALS. Our experienced professionals are committed to ensuring that you have a positive and memorable living experience. Whether you have questions about our properties or need assistance during your stay, our team is here to help.</h5>
+        </div>
+          <Contact />
       </div>
       <Footer />
     </>

@@ -55,12 +55,20 @@ function Admin() {
           },
         }
       );
-
+  
       console.log('Property added successfully:', response.data);
-      // Handle success as needed
+  
+      setPropertyData({
+        address: '',
+        price: '',
+        type: '',
+        size: '',
+        numBeds: '',
+      });
+      setSelectedImage(null);
     } catch (error) {
       console.error('Error adding property:', error.response);
-      // Handle error as needed
+      console.error('Error details:', error.response.data);
     }
   };
 
@@ -81,7 +89,7 @@ function Admin() {
                 type="file"
                 name="file"
                 accept="image/png, image/jpeg, image/jpg"
-                style={{ display: 'none' }}
+                style={{ display: 'none'}}
                 onChange={handleFileChange}
               />
             </label>
@@ -130,7 +138,9 @@ function Admin() {
               value={propertyData.numBeds}
               onChange={handleInputChange}
             />
-            <button onClick={handleSubmit}>Submit</button>
+            <button onClick={handleSubmit} disabled={!selectedImage}>
+              Submit
+            </button>
           </div>
         </div>
       </div>
