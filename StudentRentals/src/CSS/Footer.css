@@ -10,7 +10,7 @@ footer {
   padding: 50px;
   background-color: #3D1111;
   width: 100%;
-  min-height: 20vh; /* Change 'height' to 'min-height' */
+  min-height: 20vh;
 }
 
 .fsc-container{
@@ -35,3 +35,4 @@ footer {
   font-weight: bold;
   font-size: 20px;
 }
+

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
 import "../CSS/Signup.css";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import bg from "../Images/bg-login.jpg";
 import logo from "../Images/logo.png";
 import citlogo from "../Images/citlogo.png";
@@ -17,6 +18,7 @@ function Signup() {
   const [passwordError, setPasswordError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleGenderChange = (event) => {
     setGender(event.target.value);
@@ -169,10 +171,6 @@ function Signup() {
               )}
             </div>
 
-            {passwordError && (
-              <div style={{ color: "red" }}>{passwordError}</div>
-            )}
-
             <div className="gender-container">
               <label htmlFor="gender">Gender:</label>
               <div className="gender-options">
@@ -198,6 +196,10 @@ function Signup() {
                 </label>
               </div>
             </div>
+
+            {passwordError && (
+              <div style={{ color: "red" }}>{passwordError}</div>
+            )}
 
             <button onClick={handleSignup}>Continue</button>
             <div style={{marginTop: '0'}}>

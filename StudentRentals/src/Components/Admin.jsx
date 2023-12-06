@@ -14,14 +14,10 @@ function Admin() {
   });
 
   const handleFileChange = (e) => {
-    const file = e.target.files[0];
+    const image = e.target.files[0];
 
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = function () {
-        setSelectedImage(reader.result);
-      };
-      reader.readAsDataURL(file);
+    if (image) {
+      setSelectedImage(image);
     }
   };
 
@@ -38,12 +34,12 @@ function Admin() {
 
   const handleSubmit = async () => {
     const formData = new FormData();
-    formData.append('file', selectedImage);
+    formData.append('image', selectedImage);
     formData.append('address', propertyData.address);
     formData.append('price', propertyData.price);
     formData.append('type', propertyData.type);
     formData.append('size', propertyData.size);
-    formData.append('numbeds', propertyData.numBeds);
+    formData.append('numbeds', propertyData.numbeds);
 
     try {
       const response = await axios.post(
@@ -63,7 +59,7 @@ function Admin() {
         price: '',
         type: '',
         size: '',
-        numBeds: '',
+        numbeds: '',
       });
       setSelectedImage(null);
     } catch (error) {
@@ -77,17 +73,17 @@ function Admin() {
       <Header />
       <div className="admin-container">
         <div className="lft-section">
-          <h1>Add a Property</h1>
+          <h1>ADD A PROPERTY</h1>
           <div className="pic-container">
-            {selectedImage && <img src={selectedImage} alt="Selected" />}
+            {selectedImage && <img src={URL.createObjectURL(selectedImage)} alt="Selected" />}
           </div>
           <div className="btn-container">
             <label htmlFor="fileInput">
-              Add Picture
+              Add
               <input
                 id="fileInput"
                 type="file"
-                name="file"
+                name="image"
                 accept="image/png, image/jpeg, image/jpg"
                 style={{ display: 'none'}}
                 onChange={handleFileChange}
@@ -134,8 +130,8 @@ function Admin() {
             <input
               type="text"
               placeholder="Number of beds"
-              name="numBeds"
-              value={propertyData.numBeds}
+              name="numbeds"
+              value={propertyData.numbeds}
               onChange={handleInputChange}
             />
             <button onClick={handleSubmit} disabled={!selectedImage}>

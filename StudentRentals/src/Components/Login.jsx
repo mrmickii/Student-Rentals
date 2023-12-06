@@ -12,6 +12,8 @@ function Login() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const [isBellVisible, setIsBellVisible] = useState(false);
+  const [isProfileVisible, setIsProfileVisible] = useState(false);
   
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -27,6 +29,8 @@ function Login() {
   
       if (response.data) {
         console.log('Login successful:', response.data);
+        setIsBellVisible(true);
+        setIsProfileVisible(true);
         navigate('/');
       } else {
         console.error('Login failed: Invalid username or password');
@@ -46,6 +50,8 @@ function Login() {
 
       if (response.data) {
         console.log('Login successful:', response.data);
+        setIsBellVisible(true);
+        setIsProfileVisible(true);
 
         if (isAdmin) {
           navigate('/admin');
