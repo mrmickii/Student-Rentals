@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';  // Add this import
+import { HashLink as Link } from 'react-router-hash-link';
+import axios from 'axios';
 import '../CSS/LandingPage.css';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
@@ -8,9 +9,9 @@ import Service from '../Components/Service';
 import AboutUs from "../Components/AboutUs";
 import bglp from '../Images/firstpagebg.png';
 
-function LandingPage() {
+function LandingPage(props) {
   const [propertyData, setPropertyData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);  
 
   useEffect(() => {
     const fetchPropertyData = async () => {
@@ -25,14 +26,12 @@ function LandingPage() {
         setLoading(false);
       }
     };
-
     fetchPropertyData();
   }, []);
 
   if (loading) {
     return <div>Loading...</div>;
   }
-
   console.log('Rendering propertyData:', propertyData);
 
   return (
@@ -53,16 +52,51 @@ function LandingPage() {
         <div className="ssh-text">
           <h1>OUR PROPERTIES</h1>
         </div>
-        <div className="property-list">
-          {propertyData.map((property) => (
-            <div key={property.propid} className="property-item">
-              <h2>{property.address}</h2>
-              <p>Price: {property.price}</p>
-              <p>Type: {property.type}</p>
-              <p>Size: {property.size}</p>
-              <p>Number of Beds: {property.numbeds}</p>
-            </div>
-          ))}
+        <div className="property-container">
+          <div className="property-list">
+            {propertyData.map((property) => (
+              <Link
+              to={{
+                pathname: `/details/${property.propid}`,
+                state: { propertyName: property.name },
+              }}
+                key={property.propid}
+                style={{ color: 'inherit', textDecoration: 'inherit' }}
+              >
+                <div className="property-item">
+                <img
+                  src={`http://localhost:8080/images/${property.propid}`}
+                  alt={property.name}
+                  onError={(e) => {
+                    console.error("Image loading error", e, e.nativeEvent);
+                  }}
+                />
+
+                  <h2>{property.name}</h2>
+                  <h4>
+                    <box-icon name='location-plus' type='solid' size='sm'></box-icon>
+                    {" "}{property.address}
+                  </h4>
+                  <p>
+                    <box-icon name='money' ></box-icon>
+                    {" "}{property.price} {"  /Mo"}
+                  </p>
+                  <p>
+                    <box-icon type='solid' name='city'></box-icon>
+                    {" "}{property.type}{" Type"}
+                  </p>
+                  <p>
+                    <box-icon name='area' ></box-icon>
+                    {" "}{property.size} {" Sqm"}
+                  </p>
+                  <p>
+                    <box-icon name='bed'></box-icon>
+                    {" "}{property.numbeds} {" Bed/s"}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
 

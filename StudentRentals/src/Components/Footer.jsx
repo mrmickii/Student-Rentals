@@ -11,7 +11,7 @@ const address = 'Natalio B. Bacalso Ave, Cebu City, 6000 Cebu'
 function Footer(){
   return(
     <footer>
-      <Link smooth to ='#firstsection'>
+      <Link to='/'>
         <div>
           <img 
             src={logo} 

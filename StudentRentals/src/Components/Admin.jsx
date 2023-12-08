@@ -6,6 +6,7 @@ import Header from './Header';
 function Admin() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [propertyData, setPropertyData] = useState({
+    name: '',
     address: '',
     price: '',
     type: '',
@@ -16,9 +17,11 @@ function Admin() {
   const handleFileChange = (e) => {
     const image = e.target.files[0];
 
-    if (image) {
+    if (image && image.size <= 1048576) {
       setSelectedImage(image);
-    }
+  } else {
+      console.error('File size exceeds the limit.');
+  }
   };
 
   const handleRemoveImage = () => {
@@ -35,6 +38,7 @@ function Admin() {
   const handleSubmit = async () => {
     const formData = new FormData();
     formData.append('image', selectedImage);
+    formData.append('name', propertyData.name)
     formData.append('address', propertyData.address);
     formData.append('price', propertyData.price);
     formData.append('type', propertyData.type);
@@ -55,6 +59,7 @@ function Admin() {
       console.log('Property added successfully:', response.data);
   
       setPropertyData({
+        name: '',
         address: '',
         price: '',
         type: '',
@@ -98,6 +103,13 @@ function Admin() {
             <p>Add facilities available at your place</p>
             <input
               type="text"
+              placeholder="Name"
+              name="name"
+              value={propertyData.name}
+              onChange={handleInputChange}
+            />
+            <input
+              type="text"
               placeholder="Address"
               name="address"
               value={propertyData.address}
@@ -110,6 +122,9 @@ function Admin() {
               value={propertyData.price}
               onChange={handleInputChange}
             />
+          </div>
+          <div className="add-container">
+            <p>Add amenities available at your place</p>
             <input
               type="text"
               placeholder="Type"
@@ -117,9 +132,6 @@ function Admin() {
               value={propertyData.type}
               onChange={handleInputChange}
             />
-          </div>
-          <div className="add-container">
-            <p>Add amenities available at your place</p>
             <input
               type="text"
               placeholder="Size"

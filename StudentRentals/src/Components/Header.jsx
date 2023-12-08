@@ -12,7 +12,7 @@ function Header() {
 
   return (
     <header>
-      <Link smooth to="#firstsection">
+      <Link to="/">
         <div className="logo-container">
           <img
             src={logo}
