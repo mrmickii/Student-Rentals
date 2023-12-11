@@ -6,6 +6,8 @@ import Signup from './Components/Signup'
 import LandingPage from './Components/LandingPage';
 import Admin from './Components/Admin'
 import Details from './Components/Details'
+import Notification from './Components/Notification';
+import Booking from './Components/Booking';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -15,6 +17,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route exact path='/admin' element={<Admin />}></Route>
         <Route exact path='/login' element={<Login />}></Route>
         <Route exact path='/signup' element={<Signup />}></Route>
+        <Route exact path='/notificationPayment' element={<Notification/>}></Route>
+        <Route exact path='/insertBooking' element={<Booking/>}></Route>
         <Route exact path='/details/:propid' element={<Details />} />
       </Routes>
     </Router>
