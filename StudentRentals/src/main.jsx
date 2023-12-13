@@ -14,6 +14,8 @@ import DeleteProperty from './Components/DeleteProperty';
 import DeleteStudent from './Components/DeleteStudent';
 import EditProfile from './Components/EditProfile';
 import Notification from './Components/Notification';
+import Booking from './Components/Booking';
+import { ConfirmPage } from './Components/ConfirmPage';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -32,6 +34,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route exact path='/details/:propid' element={<Details />}></Route>
           <Route exact path='/editprofile' element={<EditProfile />}> </Route>
           <Route exact path='/notifications' element={<Notification />}> </Route>
+          <Route exact path='/insertBooking' element={<Booking />}> </Route>
+          <Route exact path='/confirm' element={<ConfirmPage />}> </Route>
         </Routes>
       </Router>
     </AuthProvider>
