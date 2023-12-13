@@ -42,10 +42,9 @@ function Login() {
     }
   };
   
-  const handleAdminLogin = async () => { // Remove the unnecessary argument
+  const handleAdminLogin = async () => { 
     try {
-      const endpoint = 'http://localhost:8080/studentrentals/admin'; // Always admin login endpoint
-  
+      const endpoint = 'http://localhost:8080/studentrentals/admin';
       const response = await axios.post(endpoint, { username, password });
   
       if (response.data) {

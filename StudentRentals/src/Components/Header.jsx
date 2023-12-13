@@ -62,7 +62,9 @@ function Header({ isAdmin, hideUlAndButton, hideUl }) {
         )}
         {isLoggedIn && !isAdmin && (
           <>
+          <Link to='/notifications'>
             <box-icon type='solid' name='bell' color='white' animation='tada-hover'></box-icon>
+          </Link>
             <Link to='/editprofile'>
               <div className="profile-container">
                 <img

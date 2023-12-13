@@ -1,10 +1,17 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import Header from "./Header";
 import { Link } from 'react-router-dom';
 import "../CSS/Logout.css"
 
 function Logout() {
   const [adminLogin, setAdminLogin] = useState(true);
+  const navigate = useNavigate();
+
+  const handleBackClick = () => {
+    navigate(-1);
+  };
+
   return (
     <>
       <Header isAdminLoggedIn={adminLogin} hideUlAndButton={true} />
@@ -21,9 +28,7 @@ function Logout() {
             Yes
           </button>
         </Link>
-        <Link to='/admin'>
-          <button style={{backgroundColor: '#3D1111'}}>No</button>
-        </Link>
+          <button style={{backgroundColor: '#3D1111'}} onClick={handleBackClick}>No</button>
       </div>
     </>
   );
