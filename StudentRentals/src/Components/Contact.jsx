@@ -9,7 +9,9 @@ const num = '9123456789'
 function AboutUs(){
   return (
     <div className="au-container">
-
+      <div className="ffsh-text">
+          <h1>OUR TEAM</h1>
+      </div>
       <div className="au-card">
       <div className="devs">
           <img 

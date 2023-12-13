@@ -93,21 +93,9 @@ html, body {
 }
 
 .fifthsection{
-  height: 70vh;
+  height: 90vh;
 }
 
-.ffsh-text{
-  text-align: center;
-  margin-top: 50px;
-  padding: 0px 50px;
-  font-size: 500px;
-}
-.ffsh-text h1{
-  font-family: 'Sancreek', serif;
-}
-.ffsh-text h3{
-  font-size: 35px;
-}
 .feature-container{
   display: flex;
   width: 100%;
@@ -116,11 +104,13 @@ html, body {
 
 .property-container {
   display: flex;
+  flex-direction: column;
   width: 100%;
   height: 91vh;
-  justify-content: center;
-  align-items: center;
   padding: 50px;
+}
+#secondscroll{
+  margin-bottom: 150px;
 }
 
 .property-list {

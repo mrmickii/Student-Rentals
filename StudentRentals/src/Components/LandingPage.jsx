@@ -14,12 +14,12 @@ function LandingPage() {
   const [filteredData, setFilteredData] = useState([]);
   const [searchCriteria, setSearchCriteria] = useState({
     type: '',
-    address: '', // New property for address
+    address: '', 
     name: '',
   });
   const [loading, setLoading] = useState(true);
   const [propertyTypes, setPropertyTypes] = useState([]);
-  const [propertyAddresses, setPropertyAddresses] = useState([]); // New state for addresses
+  const [propertyAddresses, setPropertyAddresses] = useState([]);
 
   useEffect(() => {
     const fetchPropertyData = async () => {
@@ -34,7 +34,6 @@ function LandingPage() {
         const uniqueTypes = Array.from(new Set(response.data.map(property => property.type)));
         setPropertyTypes(uniqueTypes);
 
-        // Extract unique addresses from data
         const uniqueAddresses = Array.from(new Set(response.data.map(property => property.address)));
         setPropertyAddresses(uniqueAddresses);
       } catch (error) {
@@ -117,10 +116,10 @@ function LandingPage() {
       </div>
 
       <div className="section secondsection" id="secondsection">
-        <div className="ssh-text">
-          <h1>OUR PROPERTIES</h1>
-        </div>
         <div className="property-container">
+        <div className="ssh-text">
+          <h1 id='secondscroll'>OUR PROPERTIES</h1>
+        </div>
           <div className="property-list">
             {filteredData.map((property) => (
               <Link
@@ -198,9 +197,6 @@ function LandingPage() {
       </div>
 
       <div className="section fifthsection" id="fifthsection">
-        <div className="ffsh-text">
-          <h1>OUR TEAM</h1>
-        </div>
         <Contact />
       </div>
       <Footer />
