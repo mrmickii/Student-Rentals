@@ -1,0 +1,58 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.userprofile{
+  display: flex;
+  width: 100%;
+  height: 82vh;
+}
+.upone{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  height: 82vh;
+}
+.upone-container{
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(235, 235, 235);
+  width: 80%;
+  height: 90%;
+  border-radius: 10px;
+}
+.upone-container img{
+  align-self: center;
+  width: 200px;
+  height: 200px;
+  margin: 50px;
+}
+.upone-container p{
+  text-align: center;
+  font-family: 'Montserrat', sans-serif; 
+  font-weight: bold;
+  font-size: 20px;
+}
+.uptwo{
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+  margin: 50px;
+  gap: 50px;
+}
+.uptwo p{
+  font-family: 'Montserrat', sans-serif; 
+  font-size: 50px;
+  font-weight: bold;
+}
+.uptwo button{
+  padding: 10px 20px;
+  background-color: #f28500;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+

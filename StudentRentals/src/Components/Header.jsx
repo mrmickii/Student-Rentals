@@ -65,7 +65,7 @@ function Header({ isAdmin, hideUlAndButton, hideUl }) {
           <Link to='/notifications'>
             <box-icon type='solid' name='bell' color='white' animation='tada-hover'></box-icon>
           </Link>
-            <Link to='/editprofile'>
+            <Link to='/studentaccount'>
               <div className="profile-container">
                 <img
                   src={profile}

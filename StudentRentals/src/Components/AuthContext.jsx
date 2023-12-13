@@ -9,9 +9,16 @@ export const AuthProvider = ({ children }) => {
   const login = (userData) => {
     setIsLoggedIn(true);
     
-    // Ensure userData is defined and has the expected properties
-    if (userData && userData.firstName && userData.lastName) {
-      setUser(userData);
+    // Ensure userData is defined
+    if (userData) {
+      const { first_name, last_name, /* other user properties */ } = userData;
+
+      // Check if the required properties are present
+      if (first_name && last_name) {
+        setUser({ firstName: first_name, lastName: last_name, /* other user properties */ });
+      } else {
+        console.error('Invalid user data:', userData);
+      }
     } else {
       console.error('Invalid user data:', userData);
     }
@@ -33,7 +40,5 @@ export const AuthProvider = ({ children }) => {
 
 export const useAuth = () => {
   const { isLoggedIn, user, login, logout } = useContext(AuthContext);
-  console.log('User object:', user);
   return { isLoggedIn, user, login, logout };
 };
-

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import "../CSS/Signup.css";
-import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { useAuth } from '../Components/AuthContext'; 
 import bg from "../Images/bg-login.jpg";
 import logo from "../Images/logo.png";
 import citlogo from "../Images/citlogo.png";
@@ -9,6 +9,7 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import axios from "axios";
 
 function Signup() {
+  const { login } = useAuth(); 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -29,8 +30,9 @@ function Signup() {
     if (!password.match(passwordRegex)) {
       setPasswordError("At least 8 characters long, at least one lowercase letter, at least one uppercase letter, at least one special character from the set !@#$%^&*");
       return;
-    }else if (password !== confirmPassword){
+    } else if (password !== confirmPassword){
       setPasswordError("Invalid password, confirm your password again.")
+      return;
     }
     const signupData = {
       first_name: firstName,
@@ -43,7 +45,15 @@ function Signup() {
     try {
       const response = await axios.post("http://localhost:8080/studentrentals/insertStudent", signupData);
       console.log(response.data);
-      navigate('/admin') /// TO BE CHANGE ROUTE
+
+      // Log in the user automatically after successful signup
+      login({
+        firstName: response.data.first_name,
+        lastName: response.data.last_name,
+        // Add any other user data you need
+      });
+
+      navigate('/studentaccount');
     } catch (error) {
       console.error(error);
     }
@@ -115,20 +125,20 @@ function Signup() {
               <input
                 type="text"
                 placeholder="First Name"
-                value={firstName} // Add this line
-                onChange={(e) => setFirstName(e.target.value)} // Add this line
+                value={firstName} 
+                onChange={(e) => setFirstName(e.target.value)} 
               />
               <input
                 type="text"
                 placeholder="Last Name"
-                value={lastName} // Add this line
-                onChange={(e) => setLastName(e.target.value)} // Add this line
+                value={lastName} 
+                onChange={(e) => setLastName(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Phone number"
-                value={phoneNumber} // Add this line
-                onChange={(e) => setPhoneNumber(e.target.value)} // Add this line
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
               />
             </div>
 
