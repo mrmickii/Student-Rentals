@@ -1,33 +1,210 @@
-*{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-.details-container{
-  height: 200vh;
-  width: 100%;
-}
-.details-pic{
+.imageSection {
   display: flex;
-  width: 100%;
-  height: 80vh;
+  flex-direction: column; /* Stack elements vertically */
 }
-.dc-one{
+
+.imagesContainer {
   display: flex;
-  width: 100%;
-  height: 50%;
+  flex-wrap: wrap; /* Allow images to wrap to the next line if needed */
+  margin-bottom: 20px; /* Spacing between images and information */
 }
-.dc-inside{
+
+.leftImageContainer {
+  flex: 0 0 calc(50% - 10px); /*Adjust based on image sizes and grid gap */
+  margin-right: 20px;
+  max-height: 535px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.largeImage {
+  width: 100%;
+  height: 535px;
+  border-radius: 10px;
+}
+
+.rightImageGrid {
+  flex-wrap: wrap; 
+  display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-gap: 10px; 
+    flex: 1;
+}
+
+.smallImage {
+  width: 400px;
+  height: 255px;
+  max-width: 100%;
+  margin-bottom: 10px; 
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+.imageInfo {
+  position: relative;
+  padding: 20px;
+  margin-top: 50px;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.icons {
+  position: absolute;
+  align-self: flex-end;
+  justify-content: flex-start;
+  top: 0;
+  right: 0;
+  margin-top: 50px;
+}
+
+.parent-card-container {
+  margin-top: 50px;
+  position: relative;
+  
+}
+
+.card-container {
+  margin-left: 100px;
+}
+
+.custom-card {
+  width: 400px;
+}
+
+.cards-container {
+  padding: 10px; 
+  position: absolute;
+  margin-top: 140px;
+  display: flex;
+  gap: 16px;
+  flex: 1;
+}
+
+.cards {
+  width: 120px;
+  height: 100px;
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
-  height: 50%;
+  flex-direction: column;
+  background-color: #EFF0F2;
 }
-.dci{
-  margin: 20px;
-  border: 1px solid black;
-  border-radius: 20px;
-  width: 60%;
-  height: 80%;
+
+.description {
+  padding: 10px; 
+  position: absolute;
+  margin-top: 100px;
 }
+
+.amenities-container {
+  padding: 10px; 
+  position: absolute;
+  margin-top: 650px;
+
+}
+
+
+.button-amenity {
+  margin-top: 30px;
+}
+
+.reviews-container {
+  padding: 10px; 
+  position: absolute;
+  margin-top: 500px;
+  margin-bottom: 100px;
+  width: 100%;
+}
+
+.review-rate {
+  display:flex;
+  align-items: center;
+}
+
+.rectangle1 {
+  width: 135px;
+  height: 4px;
+  background-color: gray;
+  border-radius: 2px;
+}
+
+.rectangle2 {
+  width: 135px;
+  height: 4px;
+  background-color: gray;
+  border-radius: 2px;
+  margin-left: 50px;
+}
+
+.rectangle3 {
+  width: 135px;
+  height: 4px;
+  background-color: gray;
+  border-radius: 2px;
+  margin-left: 60px;
+}
+
+.rectangle4 {
+  width: 135px;
+  height: 4px;
+  background-color: gray;
+  border-radius: 2px;
+  margin-left: 0px;
+}
+
+.rectangle5 {
+  width: 135px;
+  height: 4px;
+  background-color: gray;
+  border-radius: 2px;
+  margin-left: 30px;
+}
+
+.paragraph-card-book {
+  font-family: Montserrat, sans-serif;
+  font-size: 17px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 0.5fr 2fr 2fr 1fr; /* Adjust the column widths as needed */
+  gap: 10px; /* Adjust the gap between items */
+  margin-bottom: 50px;
+}
+
+.grid-item {
+  display: flex;
+  font-family: Montserrat, sans-serif;
+}
+
+.grid-container-reviews {
+  display: grid;
+  grid-template-columns: 400px 400px 400px 400px; /* Two columns */
+  gap: 20px; /* Adjust the gap between items */
+  margin-top: 50px;
+}
+
+.nested-grid {
+  display: grid;
+  grid-template-rows: 1fr 1fr; /* Two rows within the nested grid */
+}
+
+.nested-item {
+  font-family: Montserrat, sans-serif;
+  margin-left: 30px;
+}
+
+.item3 {
+  margin-left: 30px;
+  text-align: 'justify';
+}
+
+.textarea-class::placeholder {
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+}
+
+
