@@ -15,7 +15,11 @@ import DeleteStudent from './Components/DeleteStudent';
 import EditProfile from './Components/EditProfile';
 import Notification from './Components/Notification';
 import Booking from './Components/Booking';
+<<<<<<< HEAD
 import { ConfirmPage } from './Components/ConfirmPage';
+=======
+import StudentAccount from './Components/StudentAccount';
+>>>>>>> b823faeac739f7361b5c112595e71dc3db35a7a5
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -32,10 +36,15 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route exact path='/signup' element={<Signup />}></Route>
           <Route exact path='/admin' element={<Admin />}></Route>
           <Route exact path='/details/:propid' element={<Details />}></Route>
+          <Route exact path='/studentaccount' element={<StudentAccount />}> </Route>
           <Route exact path='/editprofile' element={<EditProfile />}> </Route>
           <Route exact path='/notifications' element={<Notification />}> </Route>
+<<<<<<< HEAD
           <Route exact path='/insertBooking' element={<Booking />}> </Route>
           <Route exact path='/confirm' element={<ConfirmPage />}> </Route>
+=======
+          <Route exact path='/booking' element={<Booking />}> </Route>
+>>>>>>> b823faeac739f7361b5c112595e71dc3db35a7a5
         </Routes>
       </Router>
     </AuthProvider>

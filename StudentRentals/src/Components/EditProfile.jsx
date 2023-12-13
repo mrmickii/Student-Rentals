@@ -1,39 +1,69 @@
-import React, { useEffect } from "react";
-import '../CSS/EditProfile.css';
+import React, { useState } from "react";
+import "../CSS/EditProfile.css";
 import Header from "../Components/Header";
-import { Link } from 'react-router-dom';
-import { useAuth } from '../Components/AuthContext';
+import { useNavigate } from "react-router-dom";
 
 function EditProfile() {
-  const { user } = useAuth();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log('User object:', user);
-  }, [user]);
+  const handleBackClick = () => {
+    navigate(-1);
+  };
+
+  // Step 1: Declare gender state and handleGenderChange function
+  const [gender, setGender] = useState("");
+
+  const handleGenderChange = (event) => {
+    setGender(event.target.value);
+  };
 
   return (
     <>
       <Header hideUl={true} />
-      <Link to='/' style={{ textDecoration: 'none', color: 'black' }}>
-        <div className="back-container">
-          <box-icon name='arrow-back' size='md'></box-icon>
-          <p className="back">Back</p>
-        </div>
-      </Link>
-      <div className="userprofile">
-        <div className="upone">
-          <div className="upone-container">
-            {user && (
-              <>
-                <img src="" alt="" />
-                <p>Upload a photo</p>
-                <p style={{ margin: '20px' }}>Identity Verification</p>
-                <p>{user.firstName} {user.lastName}</p>
-              </>
-            )}
+      <div
+        className="back-container"
+        onClick={handleBackClick}
+        style={{ cursor: "pointer" }}
+      >
+        <box-icon name="arrow-back" size="md"></box-icon>
+        <p className="back">Back</p>
+      </div>
+      <div className="edit-profile-container">
+        <h2>Edit Profile</h2>
+        <h4>Personal Information</h4>
+        <input type="text" placeholder="First Name" />
+        <input type="text" placeholder="Last Name" />
+        <input type="text" placeholder="Phone Number" />
+        <input type="text" placeholder="Username" />
+        <input type="text" placeholder="Password" />
+
+        <div className="gender-container">
+          <label htmlFor="gender">Gender:</label>
+          <div className="gender-options">
+            <label>
+              <input
+                type="radio"
+                name="gender"
+                value="male"
+                checked={gender === "male"}
+                onChange={handleGenderChange}
+              />
+              Male
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="gender"
+                value="female"
+                checked={gender === "female"}
+                onChange={handleGenderChange}
+              />
+              Female
+            </label>
           </div>
         </div>
-        <div className="uptwo"></div>
+
+        <button>Save</button>
       </div>
     </>
   );
