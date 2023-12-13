@@ -1,0 +1,110 @@
+.main-container {
+    display: flex;
+    flex-direction: column; 
+    width:auto;
+    margin: 0 auto;
+  }
+  .arrow-container {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Adjust the space between icon and text */
+    margin-top: 30px;
+    margin-left: 30px;
+  }
+  .arrow-container p {
+    margin: 0; /* Remove default margin for the paragraph */
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    text-decoration: none; 
+    color: black;
+  }
+
+  .description-reservation {
+    display: flex;
+    position: relative; /* Changed to relative positioning */
+    background-color: #EFF0F2;
+    width: 67%; /* Adjusted width to 67% */
+    max-width: 800px; /* Limit the maximum width for larger screens */
+    height: 325px;
+    margin: 55px auto 0; /* Center the container horizontally and adjust top margin */
+    padding: 0;
+    border-radius: 10px;
+}
+
+.image-description {
+    float: right; /* Removed margin-left and added float:right */
+    height: 100px;
+    margin-top: 20px;
+}
+
+  .student-information {
+    width: 100%; /* Full width within the main container */
+    max-width: 800px; /* Limit the maximum width for larger screens */
+    margin: 0 auto; /* Center the content horizontally */
+}
+  .student-information {
+    width: 50%;
+    margin-left: 70px;
+  }
+ 
+  .student-information h2 {
+    font-family: Montserrat, sans-serif;
+  }
+ 
+  .student-information p {
+    font-family: Montserrat, sans-serif;
+  }
+  .custom-text-field {
+    width: 200px;
+  }
+ 
+  .description-reservation {
+    display: flex;
+    position: absolute;
+    background-color: #EFF0F2;
+    width: 450px;
+    height: 325px;
+    margin: 55px 0 0 825px;
+    padding: 0;
+    border-radius: 10px;
+  }
+ 
+  .image-reservation {
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+  }
+ 
+  .pic-reservation {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    margin-left: 30px;
+  }
+ 
+.image-description {
+  float: right;
+  height: 100px;
+  margin-left: 50px;
+  padding: 0;
+  margin-right: 0;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+ 
+.image-description h4 {
+  margin: 10px 0 0 0;
+  padding: 0;
+  font-family: Montserrat, sans-serif;
+}
+ 
+.price-details {
+  width: 200px;
+  height: 100px;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+ 
+.price-details h3 {
+  font-family: Montserrat, sans-serif;
+}
