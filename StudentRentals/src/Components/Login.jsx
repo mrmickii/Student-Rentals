@@ -6,15 +6,16 @@ import logo from '../Images/logo.png';
 import citlogo from '../Images/citlogo.png';
 import '../CSS/Login.css';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
+import { useAuth } from '../Components/AuthContext'; 
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
-  const [isBellVisible, setIsBellVisible] = useState(false);
-  const [isProfileVisible, setIsProfileVisible] = useState(false);
-  
+  const { login } = useAuth();
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -29,41 +30,37 @@ function Login() {
   
       if (response.data) {
         console.log('Login successful:', response.data);
-        setIsBellVisible(true);
-        setIsProfileVisible(true);
+        login(response.data); 
         navigate('/');
       } else {
+        setErrorMessage("Invalid username or password");
         console.error('Login failed: Invalid username or password');
       }
     } catch (error) {
+      setErrorMessage("Invalid username or password");
       console.error('Login failed:', error.response?.data || error.message);
     }
   };
-
-  const handleAdminLogin = async (isAdmin) => {
+  
+  const handleAdminLogin = async () => { // Remove the unnecessary argument
     try {
-      const endpoint = isAdmin
-        ? 'http://localhost:8080/studentrentals/admin'
-        : 'http://localhost:8080/studentrentals';
-
+      const endpoint = 'http://localhost:8080/studentrentals/admin'; // Always admin login endpoint
+  
       const response = await axios.post(endpoint, { username, password });
-
+  
       if (response.data) {
-        console.log('Login successful:', response.data);
-        setIsBellVisible(true);
-        setIsProfileVisible(true);
-
-        if (isAdmin) {
-          navigate('/admin');
-        }
+        console.log('Admin Login successful:', response.data);
+        navigate('/admin');
       } else {
-        console.error('Login failed: Response data is undefined');
+        setErrorMessage("Admin login failed: Invalid username or password");
+        console.error('Admin Login failed: Response data is undefined');
       }
     } catch (error) {
-      console.error('Login failed:', error.response?.data || error.message);
+      setErrorMessage("Invalid username or password");
+      console.error('Admin Login failed:', error.response?.data || error.message);
     }
   };
-
+  
   return (
     <>
       <div className="lgn-components">
@@ -106,31 +103,36 @@ function Login() {
                 paddingTop: "50px",
                 position: "absolute",
                 top: '5%'
-              }} />
+              }}
+            />
             <p>Sign In</p>
+            <p className="error-message">{errorMessage}</p>
             <input
               type="text"
               placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
-             <input
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <span className="password-toggle" onClick={togglePasswordVisibility}>
-                {showPassword ? <FiEyeOff /> : <FiEye />}
-              </span>
-            <button onClick={() => handleLogin(true)}>Login</button>
-            <hr />
-            <button onClick={() => handleAdminLogin(true)}>Login as Admin</button>
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <span className="password-toggle" onClick={togglePasswordVisibility}>
+              {showPassword ? <FiEyeOff /> : <FiEye />}
+            </span>
+            <p className="error-message"></p>
+            <button onClick={handleLogin}>Login</button> 
+            <button onClick={handleAdminLogin}>Login as Admin</button> {/* Updated line */}
             <div>
-              <h3>Don't Have an Account yet? <Link to='/signup'>Signup</Link>
+              <h3>
+                Don't Have an Account yet? 
+                <Link to='/signup'>Signup</Link>
               </h3>
             </div>
           </div>
+
         </div>
       </div>
     </>

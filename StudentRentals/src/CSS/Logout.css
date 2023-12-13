@@ -1,0 +1,40 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.lo-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90vh;
+}
+.lo-container h1{
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  color: #3D1111;
+  margin: 50px;
+
+}
+.lo-container button{
+  margin: 20px;
+  width: 300px;
+  padding: 12px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  box-shadow: 0px 0px 10px black;
+  transition: transform 0.5s ease-in-out;
+  transform: scale(1);
+}
+.lo-container button:nth-child(3){
+  background-color: gray;
+}
+.lo-container button:hover{
+  transform: scale(1.05);
+  box-shadow: 5px 5px 20px #3D1111;
+}

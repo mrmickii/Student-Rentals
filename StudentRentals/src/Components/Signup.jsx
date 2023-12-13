@@ -43,6 +43,7 @@ function Signup() {
     try {
       const response = await axios.post("http://localhost:8080/studentrentals/insertStudent", signupData);
       console.log(response.data);
+      navigate('/admin') /// TO BE CHANGE ROUTE
     } catch (error) {
       console.error(error);
     }

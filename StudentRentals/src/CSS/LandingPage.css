@@ -16,6 +16,48 @@ html, body {
   height: 100vh;
   scroll-behavior: smooth;
 }
+.firstsection{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.firstsection h1 {
+  margin-top: -22%;
+  position: absolute;
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+  color: white;
+  font-size: 70px;
+}
+.firstsection h3{
+  position: absolute;
+  color: white;
+  margin-top: -15%;
+  font-size: 30px;
+}
+.search-bar{
+  display: flex;
+  position: absolute;
+  gap: 20px;
+  justify-content: center;
+  width: 40%;
+  padding: 20px 10px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 5px 5px 30px #f28500;
+}
+.search-bar input, .search-bar button, .search-bar select{
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 1px solid wheat
+}
+.search-bar button{
+  background-color: #f28500;
+  color: white;
+  
+}
 
 .ssh-text {
   display: flex;
@@ -73,30 +115,31 @@ html, body {
   padding-top: 100px;
 }
 
-.property-container{
+.property-container {
   display: flex;
   width: 100%;
   height: 91vh;
+  justify-content: center;
+  align-items: center;
   padding: 50px;
 }
-.property-list{
-  width: auto;
-  align-self: center;
-}
-.property-item{
+
+.property-list {
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
-  margin: 100px 20px;
+}
+
+.property-item {
+  width: 350px;
+  margin: 20px;
   border: solid 1px gray;
   border-radius: 5px;
   padding: 20px;
   box-shadow: 5px 5px 5px black;
-  transition: transform 0.5s ease-in-out; 
+  transition: transform 0.5s ease-in-out;
   transform: scale(1);
 }
 
-.property-item:hover {
-  transform: scale(1.05);
-  box-shadow: 5px 5px 20px #f28500; 
-}
+

@@ -4,111 +4,34 @@
   box-sizing: border-box;
 }
 
-.admin-container {
-  display: flex;
-}
-
-.lft-section {
+.afdiv {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
-  height: 91vh;
-}
-
-.lft-section h1 {
-  font-family: 'Bubblegum Sans', sans-serif; 
-  font-size: 50px;
-  font-weight: bold;
-  margin: 100px 0px 100px 0px;
-  color: black;
-}
-
-.lft-section .pic-container {
-  width: 300px;
-  height: 300px;
-  border-radius: 10px;
-  background-color: gray;
-  margin-bottom: 30px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.lft-section .pic-container img {
+  height: 90vh;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.btn-container {
-  display: flex;
   gap: 30px;
 }
 
-.btn-container button,
-.btn-container label {
-  padding: 10px 40px;
-  width: 140px;
-  text-align: center;
-  background-color: #F28500;
-  color: white;
+.afdiv button {
+  width: 500px;
+  padding: 12px;
+  border-radius: 10px;
   border: none;
-  border-radius: 20px;
-  font-family: 'Nunito', sans-serif;
-  cursor: pointer;
+  background-color: #f28500;
+  color: white;
+  box-shadow: 0px 0px 10px black;
+  transition: transform 0.5s ease-in-out;
+  transform: scale(1);
 }
 
-.btn-container button:nth-child(2) {
-  background-color: gray;
+.afdiv button:hover {
+  transform: scale(1.05);
+  box-shadow: 5px 5px 20px #3D1111;
 }
 
-.rgt-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 91vh;
-  gap: 100px;
-}
-
-.rgt-section .add-container {
-  display: flex;
-  flex-direction: column;
-  align-self: baseline;
-  justify-content: center;
-  margin-top: 200px;
-}
-
-.add-container p {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 25px;
+.afdiv h1{
+  color: #3D1111;
   font-weight: bold;
-  color: gray;
-  margin-bottom: 30px;
-}
-
-.add-container input {
-  padding: 10px;
-  width: 300px;
-  margin: 20px;
-  border-radius: 20px;
-  border: solid 1px gray;
-}
-
-.add-container button {
-  padding: 10px;
-  width: 300px;
-  border: none;
-  background-color: #F28500;
-  border-radius: 20px;
-  color: white;
-  margin: 20px;
-}
-
-.btn-post {
-  display: flex;
-  align-self: baseline;
-  align-items: center;
+  margin-top: 100px;
 }

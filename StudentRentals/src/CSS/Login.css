@@ -85,7 +85,7 @@
 }
 .password-toggle {
   position: absolute;
-  top: 60%;
+  top: 62%;
   right: 30%;
   cursor: pointer;
 }
@@ -93,3 +93,10 @@ p {
   margin-top: 0;
   margin-bottom: 0;
 }
+
+.error-message {
+  font-size: 20px !important; 
+  margin: 0 !important;
+  color: #3D1111 !important;
+}
+

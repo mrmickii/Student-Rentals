@@ -9,9 +9,17 @@ import Service from '../Components/Service';
 import AboutUs from "../Components/AboutUs";
 import bglp from '../Images/firstpagebg.png';
 
-function LandingPage(props) {
+function LandingPage() {
   const [propertyData, setPropertyData] = useState([]);
-  const [loading, setLoading] = useState(true);  
+  const [filteredData, setFilteredData] = useState([]);
+  const [searchCriteria, setSearchCriteria] = useState({
+    type: '',
+    address: '', // New property for address
+    name: '',
+  });
+  const [loading, setLoading] = useState(true);
+  const [propertyTypes, setPropertyTypes] = useState([]);
+  const [propertyAddresses, setPropertyAddresses] = useState([]); // New state for addresses
 
   useEffect(() => {
     const fetchPropertyData = async () => {
@@ -19,8 +27,16 @@ function LandingPage(props) {
         console.log('Fetching property data...');
         const response = await axios.get('http://localhost:8080/studentrentals/getAllProperty');
         setPropertyData(response.data);
+        setFilteredData(response.data); 
         setLoading(false);
         console.log('Property data fetched successfully:', response.data);
+
+        const uniqueTypes = Array.from(new Set(response.data.map(property => property.type)));
+        setPropertyTypes(uniqueTypes);
+
+        // Extract unique addresses from data
+        const uniqueAddresses = Array.from(new Set(response.data.map(property => property.address)));
+        setPropertyAddresses(uniqueAddresses);
       } catch (error) {
         console.error('Error fetching property data:', error.response);
         setLoading(false);
@@ -29,15 +45,67 @@ function LandingPage(props) {
     fetchPropertyData();
   }, []);
 
+  const handleSearch = () => {
+    const filtered = propertyData.filter(property => {
+      const typeMatch = searchCriteria.type === '' || property.type.toLowerCase() === searchCriteria.type.toLowerCase();
+      const addressMatch = searchCriteria.address === '' || property.address.toLowerCase() === searchCriteria.address.toLowerCase();
+      const nameMatch = searchCriteria.name === '' || property.name.toLowerCase().includes(searchCriteria.name.toLowerCase());
+      return typeMatch && addressMatch && nameMatch;
+    });
+
+    setFilteredData(filtered);
+
+    const secondSection = document.getElementById('secondsection');
+    if (secondSection) {
+      secondSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setSearchCriteria(prevCriteria => ({ ...prevCriteria, [name]: value }));
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
-  console.log('Rendering propertyData:', propertyData);
 
   return (
     <>
       <Header />
       <div className="section firstsection" id="firstsection">
+        <h1>I DECIDE WHERE I STAY</h1>
+        <h3>Find and choose a good dorm</h3>
+        <div className="search-bar">
+          <select
+            name="type"
+            value={searchCriteria.type}
+            onChange={handleInputChange}
+          >
+            <option value="">Property Type</option>
+            {propertyTypes.map((type, index) => (
+              <option key={index} value={type}>{type}</option>
+            ))}
+          </select>
+          <select
+            name="address"
+            value={searchCriteria.address}
+            onChange={handleInputChange}
+          >
+            <option value="">Address</option>
+            {propertyAddresses.map((address, index) => (
+              <option key={index} value={address}>{address}</option>
+            ))}
+          </select>
+          <input
+            type="text"
+            placeholder="Enter Keyword"
+            name="name"
+            value={searchCriteria.name}
+            onChange={handleInputChange}
+          />
+          <button onClick={handleSearch}>Search</button>
+        </div>
         <img 
           src={bglp} 
           alt="background"
@@ -54,24 +122,20 @@ function LandingPage(props) {
         </div>
         <div className="property-container">
           <div className="property-list">
-            {propertyData.map((property) => (
+            {filteredData.map((property) => (
               <Link
-              to={{
-                pathname: `/details/${property.propid}`,
-                state: { propertyName: property.name },
-              }}
+                to={{
+                  pathname: `/details/${property.propid}`,
+                  state: { propertyName: property.name },
+                }}
                 key={property.propid}
                 style={{ color: 'inherit', textDecoration: 'inherit' }}
               >
                 <div className="property-item">
-                <img
-                  src={`http://localhost:8080/images/${property.propid}`}
-                  alt={property.name}
-                  onError={(e) => {
-                    console.error("Image loading error", e, e.nativeEvent);
-                  }}
-                />
-
+                  <img
+                    src={`http://localhost:8080/property-images/${property.propid}`}
+                    alt={property.name}
+                  />
                   <h2>{property.name}</h2>
                   <h4>
                     <box-icon name='location-plus' type='solid' size='sm'></box-icon>
@@ -79,7 +143,7 @@ function LandingPage(props) {
                   </h4>
                   <p>
                     <box-icon name='money' ></box-icon>
-                    {" "}{property.price} {"  /Mo"}
+                    {" "}{property.price} {"  /Month"}
                   </p>
                   <p>
                     <box-icon type='solid' name='city'></box-icon>

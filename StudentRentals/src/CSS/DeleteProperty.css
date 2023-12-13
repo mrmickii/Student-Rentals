@@ -1,0 +1,75 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.deleteContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 82vh;
+  width: 100%;
+  gap: 20px;
+  overflow-y: auto; /* Enable vertical scrolling */
+
+}
+.deleteContainer h1{
+  color: #F28500;
+  margin-top: -5%;
+  margin-bottom: 3%;
+  font-family: 'Montserrat', sans-serif; 
+  font-size: 50px;
+  font-weight: bold;
+}
+.dcform{
+  display: flex;
+  flex-direction: column;
+}
+.dcform input {
+  padding: 10px;
+  width: 300px;
+  margin: 20px;
+  border-radius: 20px;
+  border: solid 1px gray;
+}
+.dcform button {
+  padding: 10px;
+  width: 300px;
+  border: none;
+  background-color: #F28500;
+  border-radius: 20px;
+  color: white;
+  margin: 20px;
+  cursor: pointer;
+}
+.delete-message{
+  color: green !important;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+}
+.property-table{
+  border-collapse: collapse;
+  text-align: center;
+  border: 1px solid #ddd;
+  width: 100%;
+}
+.property-table th{
+  background-color: #3D1111;
+  color: white;
+  padding: 20px 100px;
+}
+.property-table td{
+  color: #f28500;
+  font-weight: bold;
+  padding: 20px 50px;
+  border: 1px solid #ddd;
+}
+
+.table-container {
+  max-height: 280px; 
+  overflow-y: auto; 
+}
+
+.property-table tr:nth-child(even){background-color: #f2f2f2;}
