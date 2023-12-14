@@ -75,7 +75,7 @@ function Login() {
           <img src={logo} alt="company-logo" style={{
             position: "absolute",
             width: "600px",
-            left: "10%",
+            left: "8%",
             top: "15%"
           }} />
           <h1 className="lgn-title">STUDENT RENTALS</h1>
