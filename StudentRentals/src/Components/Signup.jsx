@@ -86,7 +86,7 @@ function Signup() {
             style={{
               position: "absolute",
               width: "600px",
-              left: "5%",
+              left: "6%",
               top: "15%",
             }}
           />
