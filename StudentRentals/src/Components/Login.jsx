@@ -75,7 +75,7 @@ function Login() {
           <img src={logo} alt="company-logo" style={{
             position: "absolute",
             width: "600px",
-            left: "8%",
+            left: "6%",
             top: "15%"
           }} />
           <h1 className="lgn-title">STUDENT RENTALS</h1>
@@ -104,7 +104,7 @@ function Login() {
                 width: "150px",
                 paddingTop: "50px",
                 position: "absolute",
-                top: '5%'
+                top: '1%'
               }}
             />
             <p>Sign In</p>
