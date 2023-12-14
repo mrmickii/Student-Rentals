@@ -25,7 +25,7 @@ function Footer(){
       <div className="fsc-container">
         <div className="footer-sec">
           <h1>COMPANY</h1>
-          <Link smooth to='#forthsection'>Service</Link>
+          <Link smooth to='#forthsection'>service</Link>
           <Link smooth to='#thirdsection'>About Us</Link>
           <Link smooth to='#fifthsection'>Contact Us</Link>
         </div>

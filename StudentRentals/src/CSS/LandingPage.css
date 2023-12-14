@@ -77,6 +77,7 @@ html, body {
 
 .forthsection {
   background-color: #3D1111;
+  height: 130vh;
 }
 
 .fsh-text {
@@ -97,10 +98,10 @@ html, body {
 }
 
 .feature-container{
-  display: flex;
-  width: 100%;
-  padding-top: 100px;
-}
+    display: flex;
+    width: 100%;
+    padding-top: 100px;
+}   
 
 .property-container {
   display: flex;
@@ -130,5 +131,3 @@ html, body {
   transition: transform 0.5s ease-in-out;
   transform: scale(1);
 }
-
-
