@@ -8,12 +8,18 @@ export const AuthProvider = ({ children }) => {
 
   const login = (userData) => {
     setIsLoggedIn(true);
-
+  
     if (userData) {
-      const { first_name, last_name } = userData;
-
+      const { first_name, last_name, gender, phone_number, username } = userData;
+  
       if (first_name && last_name) {
-        setUser({ firstName: first_name, lastName: last_name });
+        setUser({
+          firstName: first_name,
+          lastName: last_name,
+          gender: gender || null,
+          phone_number: phone_number || null,
+          username: username || null,
+        });
       } else {
         console.error('Invalid user data:', userData);
       }

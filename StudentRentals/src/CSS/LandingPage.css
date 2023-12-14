@@ -42,19 +42,20 @@ html, body {
   position: absolute;
   gap: 15px;
   justify-content: center;
-  width: 690px;
-  height: 122px;
+  width: 700px;
+  height: 120px;
   padding: 20px 10px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.5); 
   box-shadow: 5px 5px 30px ;
+  margin-top: 10%;
 }
 .search-bar2 {
   display: flex;
   position: absolute;
   gap: 20px;
   justify-content: center;
-  width: 97%;
+  width: 110%;
   padding: 20px 10px;
   border-radius: 10px;
   background-color: white;
@@ -89,7 +90,7 @@ html, body {
 
 .forthsection {
   background-color: #3D1111;
-  height: 130vh;
+  height: 100vh;
 }
 
 .fsh-text {

@@ -46,11 +46,9 @@ function Signup() {
       const response = await axios.post("http://localhost:8080/studentrentals/insertStudent", signupData);
       console.log(response.data);
 
-      // Log in the user automatically after successful signup
       login({
         firstName: response.data.first_name,
         lastName: response.data.last_name,
-        // Add any other user data you need
       });
 
       navigate('/studentaccount');
@@ -86,7 +84,7 @@ function Signup() {
             style={{
               position: "absolute",
               width: "600px",
-              left: "10%",
+              left: "6%",
               top: "15%",
             }}
           />
@@ -117,7 +115,7 @@ function Signup() {
                 width: "150px",
                 paddingTop: "50px",
                 position: "absolute",
-                top: "5%",
+                top: "1%",
               }}
             />
             <p>Create Account</p>
@@ -189,8 +187,8 @@ function Signup() {
                   <input
                     type="radio"
                     name="gender"
-                    value="male"
-                    checked={gender === "male"}
+                    value="Male"
+                    checked={gender === "Male"}
                     onChange={handleGenderChange}
                   />
                   Male
@@ -199,8 +197,8 @@ function Signup() {
                   <input
                     type="radio"
                     name="gender"
-                    value="female"
-                    checked={gender === "female"}
+                    value="Female"
+                    checked={gender === "Female"}
                     onChange={handleGenderChange}
                   />
                   Female

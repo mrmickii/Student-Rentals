@@ -44,8 +44,8 @@ function EditProfile() {
               <input
                 type="radio"
                 name="gender"
-                value="male"
-                checked={gender === "male"}
+                value="Male"
+                checked={gender === "Male"}
                 onChange={handleGenderChange}
               />
               Male
@@ -54,8 +54,8 @@ function EditProfile() {
               <input
                 type="radio"
                 name="gender"
-                value="female"
-                checked={gender === "female"}
+                value="Female"
+                checked={gender === "Female"}
                 onChange={handleGenderChange}
               />
               Female

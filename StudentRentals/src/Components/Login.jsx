@@ -30,15 +30,19 @@ function Login() {
   
       if (response.data) {
         console.log('Login successful:', response.data);
-        const { first_name, last_name, /* other user properties */ } = response.data;
-        login({ first_name, last_name, /* other user properties */ });
+        const { first_name, last_name, phone_number, username, gender } = response.data;
+        login({ first_name, last_name, phone_number, username, gender });
+        console.log('First Name:', first_name);
+        console.log('Last Name:', last_name);
+        console.log('Number:', phone_number);
+        console.log('Username:', username);
+        console.log('Gender:', gender);
         navigate('/');
       } else {
         setErrorMessage("Invalid username or password");
         console.error('Login failed: Invalid username or password');
       }
-      console.log('Server response:', response.data); // Log the response data
-
+  
     } catch (error) {
       setErrorMessage("Invalid username or password");
       console.error('Login failed:', error.response?.data || error.message);

@@ -1,12 +1,36 @@
 import React from 'react';
 import {HashLink as Link } from 'react-router-hash-link'
 import { useAuth } from '../Components/AuthContext'; 
+import { useNavigate } from 'react-router-dom';
 import '../CSS/Header.css';
 import logo from '../Images/logo.png';
 import profile from '../Images/citlogo.png';
 
-function Header({ isAdmin, hideUlAndButton, hideUl }) {
-  const { isLoggedIn, logout } = useAuth();
+const Header = ({ isAdmin, hideUlAndButton, hideUl }) => {
+  const { isLoggedIn, logout, user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleProfileClick = () => {
+    if (isLoggedIn && user) {
+      const { username, firstName, lastName, phone_number, gender } = user;
+      console.log('Clicked on profile. Username:', username);
+      console.log('First Name:', firstName);
+      console.log('Last Name:', lastName);
+      console.log('Number:', phone_number);
+      console.log('Gender:', gender);
+  
+      navigate('/studentaccount', {
+        state: {
+          username,
+          firstName,
+          lastName,
+          phone_number,
+          gender,
+        },
+      });
+    }
+  };
+  
 
   return (
     <header>
@@ -65,20 +89,18 @@ function Header({ isAdmin, hideUlAndButton, hideUl }) {
           <Link to='/notifications'>
             <box-icon type='solid' name='bell' color='white' animation='tada-hover'></box-icon>
           </Link>
-            <Link to='/studentaccount'>
-              <div className="profile-container">
-                <img
-                  src={profile}
-                  alt="profile"
-                  style={{
-                    width: '30px',
-                    height: '30px',
-                    borderRadius: '20px',
-                    display: 'inline-block',
-                  }}
-                />
-              </div>
-            </Link>
+            <div className="profile-container" onClick={handleProfileClick}>
+              <img
+                src={profile}
+                alt="profile"
+                style={{
+                  width: '30px',
+                  height: '30px',
+                  borderRadius: '20px',
+                  display: 'inline-block',
+                }}
+              />
+            </div>
           </>
         )}
       </div>

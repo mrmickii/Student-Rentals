@@ -1,21 +1,18 @@
 import React from "react";
 import '../CSS/StudentAccount.css';
 import Header from "./Header";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom'; 
 import { Link } from 'react-router-dom';
-import { useAuth } from '../Components/AuthContext';
 
 function StudentAccount() {
   const navigate = useNavigate();
-  const { user } = useAuth();
-  console.log('User Data:', user);
-  
-
-  console.log('User Data:', user); 
+  const location = useLocation();
+  const { firstName, lastName, username, phone_number, gender } = location.state || {};
 
   const handleBackClick = () => {
     navigate(-1);
   };
+  console.log('First Name:', firstName, 'Last Name:', lastName, 'Username:', username);
 
   return (
     <>
@@ -28,16 +25,16 @@ function StudentAccount() {
         <div className="upone">
           <div className="upone-container">
             <img src="" alt="" />
-            <p>Upload a photo</p>
-            <p style={{ margin: '20px' }}>Identity Verification</p>
+            <h2>Upload a photo</h2>
+            <h1 style={{ margin: '50px 0px 80px 0px' }}>Identity Verification</h1>
+            <p><box-icon name='user-check' ></box-icon>{firstName} {lastName}</p>
+            <p><box-icon name='male-female' ></box-icon>{gender}</p>
+            <p><box-icon name='phone' ></box-icon>{phone_number}</p>
+            <p><box-icon name='check-shield' ></box-icon>{username}</p>
           </div>
         </div>
         <div className="uptwo">
-          {user?.firstName && user?.lastName ? (
-            <p>Hello, {user.firstName} {user.lastName}</p>
-          ) : (
-            <p>Hello, Guest</p>
-          )}
+          <p>Hello, {firstName} {lastName}</p>
           <Link to='/editprofile'>
             <button>Edit Profile</button>
           </Link>

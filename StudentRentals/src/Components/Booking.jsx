@@ -5,7 +5,6 @@ import "../CSS/Booking.css";
 import Header from "../Components/Header";
 
 function Booking() {
-  // Inside your Booking component
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -37,7 +36,6 @@ function Booking() {
     const isFormValid = validateForm();
   
     if (isFormValid) {
-      // Continue with navigation
       navigate(`/payment/${propId}`, { state: { propertyData } });
     } else {
       console.log('Form has errors. Please check the fields.');
