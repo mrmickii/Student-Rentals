@@ -5,7 +5,7 @@
 }
 .details-body{
   width: 100%;
-  height: 100vh;
+  height: 120vh;
   display: flex;
 
 }
@@ -74,4 +74,37 @@
   color: white;
   border: none;
   border-radius: 20px;
+}
+
+.comments-section {
+  margin-top: 50px;
+}
+.textarea {
+  font-family: Montserrat, sans-serif;
+  font-size: medium;
+  width: 500px;
+  height: 100px;
+  resize: none;
+}
+
+.button {
+  margin-top: 10px;
+  margin-bottom: 50px;
+  padding: 10px 50px;
+  background-color: #f28500;
+  color: white;
+  border: none;
+  border-radius: 20px;
+}
+
+.comments-container {
+  display: flex;
+}
+
+.comments {
+  margin-right: 50px;
+}
+.comments p {
+  font-family: Montserrat, sans-serif;
+  text-align: justify;
 }
