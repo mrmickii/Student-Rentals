@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const AuthContext = createContext();
 
@@ -8,14 +8,12 @@ export const AuthProvider = ({ children }) => {
 
   const login = (userData) => {
     setIsLoggedIn(true);
-    
-    // Ensure userData is defined
-    if (userData) {
-      const { first_name, last_name, /* other user properties */ } = userData;
 
-      // Check if the required properties are present
+    if (userData) {
+      const { first_name, last_name } = userData;
+
       if (first_name && last_name) {
-        setUser({ firstName: first_name, lastName: last_name, /* other user properties */ });
+        setUser({ firstName: first_name, lastName: last_name });
       } else {
         console.error('Invalid user data:', userData);
       }
@@ -23,13 +21,15 @@ export const AuthProvider = ({ children }) => {
       console.error('Invalid user data:', userData);
     }
   };
-  
+
   const logout = () => {
     setIsLoggedIn(false);
     setUser(null);
   };
 
-  console.log('Auth Context - User object:', user);
+  useEffect(() => {
+    console.log('Auth Context - User object:', user);
+  }, [user]);
 
   return (
     <AuthContext.Provider value={{ isLoggedIn, user, login, logout }}>

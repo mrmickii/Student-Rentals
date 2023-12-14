@@ -31,11 +31,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route exact path='/logout' element={<Logout />}></Route>
           <Route exact path='/signup' element={<Signup />}></Route>
           <Route exact path='/admin' element={<Admin />}></Route>
-          <Route exact path='/details/:propid' element={<Details />}></Route>
+          <Route exact path='/details/:propId' element={<Details />}></Route>
           <Route exact path='/studentaccount' element={<StudentAccount />}> </Route>
           <Route exact path='/editprofile' element={<EditProfile />}> </Route>
           <Route exact path='/notifications' element={<Notification />}> </Route>
-          <Route exact path='/booking' element={<Booking />}> </Route>
+          <Route exact path='/booking/:propId' element={<Booking />}> </Route>
         </Routes>
       </Router>
     </AuthProvider>

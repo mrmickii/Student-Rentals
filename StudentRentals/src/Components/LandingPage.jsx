@@ -46,10 +46,10 @@ function LandingPage() {
 
   const handleSearch = () => {
     const filtered = propertyData.filter(property => {
-      const typeMatch = searchCriteria.type === '' || property.type.toLowerCase() === searchCriteria.type.toLowerCase();
-      const addressMatch = searchCriteria.address === '' || property.address.toLowerCase() === searchCriteria.address.toLowerCase();
-      const nameMatch = searchCriteria.name === '' || property.name.toLowerCase().includes(searchCriteria.name.toLowerCase());
-      return typeMatch && addressMatch && nameMatch;
+    const typeMatch = searchCriteria.type === '' || property.type.toLowerCase() === searchCriteria.type.toLowerCase();
+    const addressMatch = searchCriteria.address === '' || property.address.toLowerCase() === searchCriteria.address.toLowerCase();
+    const nameMatch = searchCriteria.name === '' || property.name.toLowerCase().includes(searchCriteria.name.toLowerCase());
+    return typeMatch && addressMatch && nameMatch;
     });
 
     setFilteredData(filtered);

@@ -8,6 +8,10 @@ import { useAuth } from '../Components/AuthContext';
 function StudentAccount() {
   const navigate = useNavigate();
   const { user } = useAuth();
+  console.log('User Data:', user);
+  
+
+  console.log('User Data:', user); 
 
   const handleBackClick = () => {
     navigate(-1);
