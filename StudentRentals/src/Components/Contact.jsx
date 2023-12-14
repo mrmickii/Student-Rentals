@@ -18,8 +18,8 @@ function AboutUs(){
             src={carlo} 
             alt="carlo"
             style={{
-              height: '200px',
-              width: '200px',
+              height: '150px',
+              width: '150px',
               borderRadius: '50%',
               margin: '30px',
               objectFit: 'cover'
@@ -48,8 +48,8 @@ function AboutUs(){
             src={trixie} 
             alt="trixie"
             style={{
-              height: '200px',
-              width: '200px',
+              height: '150px',
+              width: '150px',
               borderRadius: '50%',
               margin: '30px',
               objectFit: 'cover'
@@ -78,8 +78,8 @@ function AboutUs(){
             src={ken} 
             alt="ken"
             style={{
-              height: '200px',
-              width: '200px',
+              height: '150px',
+              width: '150px',
               borderRadius: '50%',
               margin: '30px',
               objectFit: 'cover'
