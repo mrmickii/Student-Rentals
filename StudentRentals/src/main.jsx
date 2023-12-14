@@ -15,6 +15,7 @@ import DeleteStudent from './Components/DeleteStudent';
 import EditProfile from './Components/EditProfile';
 import Notification from './Components/Notification';
 import Booking from './Components/Booking';
+// import ConfirmPage from './Components/ConfirmPage';
 import StudentAccount from './Components/StudentAccount';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -36,6 +37,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route exact path='/editprofile' element={<EditProfile />}> </Route>
           <Route exact path='/notifications' element={<Notification />}> </Route>
           <Route exact path='/booking/:propId' element={<Booking />}> </Route>
+          <Route exact path='/insertBooking' element={<Booking />}> </Route>
+          {/* <Route exact path='/confirm' element={<ConfirmPage />}> </Route> */}
         </Routes>
       </Router>
     </AuthProvider>

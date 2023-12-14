@@ -56,7 +56,7 @@ function Booking() {
       <div className="booking-container">
         <div className="bc-leftside">
           <h1>Student Information</h1>
-          <p>Enter necessary information for each student renting a dorm or apartment, ensuring that the provided details precisely match the information.</p>
+          <p>Enter the necessary information for the student renting a dorm, apartment or room, ensuring that the provided details precisely match the information.</p>
           <h3>Personal Information</h3>
           <input type="text" placeholder="First Name" />
           <input type="text" placeholder="Last Name" />
