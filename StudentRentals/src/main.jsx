@@ -15,32 +15,34 @@ import DeleteStudent from './Components/DeleteStudent';
 import EditProfile from './Components/EditProfile';
 import Notification from './Components/Notification';
 import Booking from './Components/Booking';
-// import ConfirmPage from './Components/ConfirmPage';
 import StudentAccount from './Components/StudentAccount';
+import PaymentPage from './Components/PaymentPage';
+import ConfirmationPage from './Components/ConfirmationPage';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route exact path='/' element={<LandingPage />}></Route>
-          <Route exact path='/addproperty' element={<AddProperty />}></Route>
-          <Route exact path='/updateproperty' element={<UpdateProperty />}></Route>
-          <Route exact path='/deleteproperty' element={<DeleteProperty />}></Route>
-          <Route exact path='/deletestudent' element={<DeleteStudent />}></Route>
-          <Route exact path='/login' element={<Login />}></Route>
-          <Route exact path='/logout' element={<Logout />}></Route>
-          <Route exact path='/signup' element={<Signup />}></Route>
-          <Route exact path='/admin' element={<Admin />}></Route>
-          <Route exact path='/details/:propId' element={<Details />}></Route>
-          <Route exact path='/studentaccount' element={<StudentAccount />}> </Route>
-          <Route exact path='/editprofile' element={<EditProfile />}> </Route>
-          <Route exact path='/notifications' element={<Notification />}> </Route>
-          <Route exact path='/booking/:propId' element={<Booking />}> </Route>
-          <Route exact path='/insertBooking' element={<Booking />}> </Route>
-          {/* <Route exact path='/confirm' element={<ConfirmPage />}> </Route> */}
-        </Routes>
-      </Router>
-    </AuthProvider>
-  </React.StrictMode>,
+  <AuthProvider>
+    <Router>
+      <Routes>
+        <Route exact path='/' element={<LandingPage />} />
+        <Route exact path='/addproperty' element={<AddProperty />} />
+        <Route exact path='/updateproperty' element={<UpdateProperty />} />
+        <Route exact path='/deleteproperty' element={<DeleteProperty />} />
+        <Route exact path='/deletestudent' element={<DeleteStudent />} />
+        <Route exact path='/login' element={<Login />} />
+        <Route exact path='/logout' element={<Logout />} />
+        <Route exact path='/signup' element={<Signup />} />
+        <Route exact path='/admin' element={<Admin />} />
+        <Route exact path='/details/:propId' element={<Details />} />
+        <Route exact path='/studentaccount' element={<StudentAccount />} /> 
+        <Route exact path='/editprofile' element={<EditProfile />} /> 
+        <Route exact path='/notifications' element={<Notification />} /> 
+        <Route exact path='/booking/:propId' element={<Booking />} /> 
+        <Route exact path='/payment/:propId' element={<PaymentPage />} />
+        <Route exact path='/confirmation' element={<ConfirmationPage />} />
+        
+      
+        <Route exact path='/insertBooking' element={<Booking />}> </Route>
+      </Routes>
+    </Router>
+  </AuthProvider>,
 )

@@ -1,0 +1,37 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.confirm-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90vh;
+  width: 100%;
+}
+.confirm-page h1{
+  color: #f28500;
+  font-family: 'Montserrat', sans-serif; 
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  margin-top: 100px;
+}
+.confirm-page p{
+  font-family: 'Montserrat', sans-serif; 
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 150px;
+}
+.confirm-page button{
+  margin-top: 100px;
+  padding: 10px 100px;
+  background-color: #f28500;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+.button{
+  display: flex;
+}

@@ -1,0 +1,35 @@
+.confirmation-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirmation-dialog-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.confirmation-buttons {
+  margin-top: 20px;
+}
+
+.confirmation-buttons button{
+  margin: 0 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+  background-color: #f28500;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+.confirmation-buttons button:nth-child(1){
+  background-color: rgb(156, 152, 152);
+}

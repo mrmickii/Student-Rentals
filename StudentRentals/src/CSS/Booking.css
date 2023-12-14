@@ -97,4 +97,18 @@
   color: gray;
   margin: 0px 0px 0px 30px;
 }
+.error-message{
+  display: flex;
+  gap: 50px;
+  
+}
+.error-message span{
+  color: red;
+  margin-top: 5px;
+  font-family: 'Montserrat', sans-serif; 
+  font-size: 15px;
+  margin-right: 50px;
+  margin-left: 10px;
+}
+
 

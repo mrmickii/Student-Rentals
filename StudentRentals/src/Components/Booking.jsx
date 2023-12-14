@@ -1,24 +1,50 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../CSS/Booking.css";
-import { Link } from 'react-router-dom';
 import Header from "../Components/Header";
-import { useNavigate } from 'react-router-dom';
 
 function Booking() {
+  // Inside your Booking component
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [formErrors, setFormErrors] = useState({});
   const navigate = useNavigate();
   const { propId } = useParams();
   const [propertyData, setPropertyData] = useState({});
-  const [loading, setLoading] = useState(true);
-
+  const [loading, setLoading] = useState(true); 
   const location = useLocation();
   const { propertyData: locationPropertyData } = location.state || {};
 
+ const validateForm = () => {
+  if (!firstName.trim() || !lastName.trim() || !phoneNumber.trim()) {
+    setFormErrors({
+      firstName: 'Please fill out all fields.',
+      lastName: 'Please fill out all fields.',
+      phoneNumber: 'Please fill out all fields.',
+    });
+    return false;
+  }
+  return true;
+};
+  
   const handleBackClick = () => {
     navigate(-1);
   };
 
+  const handleSaveClick = () => {
+    const isFormValid = validateForm();
+  
+    if (isFormValid) {
+      // Continue with navigation
+      navigate(`/payment/${propId}`, { state: { propertyData } });
+    } else {
+      console.log('Form has errors. Please check the fields.');
+    }
+  };
+   
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -45,6 +71,10 @@ function Booking() {
     }
   }, [propId, locationPropertyData]);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <Header hideUl={true} />
@@ -56,13 +86,37 @@ function Booking() {
       <div className="booking-container">
         <div className="bc-leftside">
           <h1>Student Information</h1>
-          <p>Enter the necessary information for the student renting a dorm, apartment or room, ensuring that the provided details precisely match the information.</p>
+          <p>Enter the necessary information for the student renting a dorm, apartment, or room, ensuring that the provided details precisely match the information.</p>
           <h3>Personal Information</h3>
-          <input type="text" placeholder="First Name" />
-          <input type="text" placeholder="Last Name" />
-          <input type="text" placeholder="Phone Number" />
+          <input 
+            type="text" 
+            placeholder="First Name" 
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />  
+          <input
+            type="text"
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Phone Number"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+          />
+          <p className="error-message">
+            {formErrors.firstName && <span>{formErrors.firstName}</span>}
+            {formErrors.lastName && <span>{formErrors.lastName}</span>}
+            {formErrors.phoneNumber && <span>{formErrors.phoneNumber}</span>}
+          </p>
+
+
+
+
           <div className="bcls-button">
-            <button>Save</button>
+            <button onClick={handleSaveClick}>Save</button>
           </div>
         </div>
 
@@ -77,9 +131,9 @@ function Booking() {
               <p>{propertyData.address}</p>
               <hr />
               <div className="bc-leftside-details-one-left">
-              <p>{propertyData.numbeds} Bedroom/s</p>
-              <p>0 Bathroom/s</p>
-              <p>0 Parking/s</p>
+                <p>{propertyData.numbeds} Bedroom/s</p>
+                <p>0 Bathroom/s</p>
+                <p>0 Parking/s</p>
               </div>
             </div>
           </div>
