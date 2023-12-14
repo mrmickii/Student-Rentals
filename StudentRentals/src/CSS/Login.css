@@ -35,7 +35,8 @@
   align-items: center;
   justify-content: center;
   height: 92vh;
-   position: relative;
+  margin-top: -5%;   
+  position: relative;
 }
 .lgn-container p{
   font-family: 'Open Sans', sans-serif;
@@ -81,7 +82,7 @@
 }
 .password-toggle {
   position: absolute;
-  top: 62%;
+  top: 66%;
   right: 30%;
   cursor: pointer;
 }
@@ -94,5 +95,5 @@ p {
   font-size: 20px !important; 
   margin: 0 !important;
   color: #3D1111 !important;
-}
-
+  color: #3D1111 !important;
+} 

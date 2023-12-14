@@ -115,7 +115,7 @@ function Signup() {
                 width: "150px",
                 paddingTop: "50px",
                 position: "absolute",
-                top: "1%",
+                top: "5%",
               }}
             />
             <p>Create Account</p>
