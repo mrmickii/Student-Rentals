@@ -40,17 +40,29 @@ html, body {
 .search-bar{
   display: flex;
   position: absolute;
+  gap: 15px;
+  justify-content: center;
+  width: 690px;
+  height: 122px;
+  padding: 20px 10px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.5); 
+  box-shadow: 5px 5px 30px ;
+}
+.search-bar2 {
+  display: flex;
+  position: absolute;
   gap: 20px;
   justify-content: center;
-  width: 40%;
+  width: 97%;
   padding: 20px 10px;
   border-radius: 10px;
   background-color: white;
-  box-shadow: 5px 5px 30px #f28500;
 }
+
 .search-bar input, .search-bar button, .search-bar select{
   padding: 10px 20px;
-  border-radius: 20px;
+  border-radius: 10px;
   border: 1px solid wheat
 }
 .search-bar button{

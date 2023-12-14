@@ -76,6 +76,7 @@ function LandingPage() {
         <h1>I DECIDE WHERE I STAY</h1>
         <h3>Find and choose a good dorm</h3>
         <div className="search-bar">
+          <div className="search-bar2">
           <select
             name="type"
             value={searchCriteria.type}
@@ -104,6 +105,7 @@ function LandingPage() {
             onChange={handleInputChange}
           />
           <button onClick={handleSearch}>Search</button>
+          </div>
         </div>
         <img 
           src={bglp} 
