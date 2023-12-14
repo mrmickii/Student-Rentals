@@ -104,7 +104,7 @@ function Login() {
                 width: "150px",
                 paddingTop: "50px",
                 position: "absolute",
-                top: '1%'
+                top: '10%'
               }}
             />
             <p>Sign In</p>
@@ -129,8 +129,7 @@ function Login() {
             <button onClick={handleAdminLogin}>Login as Admin</button> {/* Updated line */}
             <div>
               <h3>
-                Don't Have an Account yet? 
-                <Link to='/signup'>Signup</Link>
+                Don't Have an Account yet? <Link to='/signup'>Signup</Link>
               </h3>
             </div>
           </div>
