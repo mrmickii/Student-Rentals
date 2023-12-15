@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Header from './Header';
+import ConfirmationDialog from './ConfirmationDialog'; // Import the ConfirmationDialog component
 import '../CSS/DeleteStudent.css';
 
 function DeleteStudent() {
@@ -9,11 +10,26 @@ function DeleteStudent() {
   const [deleteMessage, setDeleteMessage] = useState('');
   const [studentData, setStudentData] = useState([]);
 
+  // State for the confirmation dialog
+  const [isDialogOpen, setDialogOpen] = useState(false);
+
   const handleInputChange = (e) => {
     setStudentId(e.target.value);
   };
 
+  // Function to open the confirmation dialog
+  const handleOpenDialog = () => {
+    setDialogOpen(true);
+  };
+
+  // Function to close the confirmation dialog
+  const handleCloseDialog = () => {
+    setDialogOpen(false);
+  };
+
   const handleDelete = async () => {
+    setDialogOpen(false); // Close the confirmation dialog
+
     try {
       const response = await axios.delete(`http://localhost:8080/studentrentals/deleteStudent/${studentId}`);
       console.log('Student deleted successfully:', response.data);
@@ -58,7 +74,7 @@ function DeleteStudent() {
             value={studentId}
             onChange={handleInputChange}
           />
-          <button onClick={handleDelete} disabled={!studentId}>
+          <button onClick={handleOpenDialog} disabled={!studentId}>
             Delete
           </button>
         </div>
@@ -93,6 +109,14 @@ function DeleteStudent() {
           </table>
         </div>
       </div>
+
+      {/* ConfirmationDialog component */}
+      <ConfirmationDialog
+        isOpen={isDialogOpen}
+        onClose={handleCloseDialog}
+        onConfirm={handleDelete}
+        message="Are you sure you want to delete this student?"
+      />
     </>
   );
 }

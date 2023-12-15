@@ -40,9 +40,11 @@ const Header = ({ isAdmin, hideUlAndButton, hideUl }) => {
   };
 
   const handleDialogConfirm = () => {
-    logout();
-    setLogoutDialogOpen(false);
-  };
+  logout();
+  setLogoutDialogOpen(false);
+  navigate('/login');
+};
+
 
   const handleDialogClose = () => {
     setLogoutDialogOpen(false);
