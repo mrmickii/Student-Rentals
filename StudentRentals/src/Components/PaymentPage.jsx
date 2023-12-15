@@ -112,6 +112,7 @@ function PaymentPage() {
         isOpen={isConfirmationDialogOpen}
         onClose={handleDialogClose}
         onConfirm={handleDialogConfirm}
+        message="Are you sure you want to confirm the payment?"
       />
     </>
   );

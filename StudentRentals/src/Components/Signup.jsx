@@ -30,7 +30,7 @@ function Signup() {
     if (!password.match(passwordRegex)) {
       setPasswordError("At least 8 characters long, at least one lowercase letter, at least one uppercase letter, at least one special character from the set !@#$%^&*");
       return;
-    } else if (password !== confirmPassword){
+    } else if (password !== confirmPassword) {
       setPasswordError("Invalid password, confirm your password again.")
       return;
     }
@@ -41,17 +41,31 @@ function Signup() {
       gender: gender,
       password: password
     };
-
+  
     try {
       const response = await axios.post("http://localhost:8080/studentrentals/insertStudent", signupData);
       console.log(response.data);
-
+  
+      const userData = response.data || {};
       login({
-        firstName: response.data.first_name,
-        lastName: response.data.last_name,
+        studentId: userData.student_id || null,
+        firstName: userData.first_name || "",
+        lastName: userData.last_name || "",
+        username: userData.username || "",
+        phone_number: userData.phone_number || "",
+        gender: userData.gender || "",
       });
-
-      navigate('/studentaccount');
+  
+      navigate('/studentaccount', {
+        state: {
+          studentId: userData.student_id || null,
+          firstName: userData.first_name || "",
+          lastName: userData.last_name || "",
+          username: userData.username || "",
+          phone_number: userData.phone_number || "",
+          gender: userData.gender || "",
+        }
+      });
     } catch (error) {
       console.error(error);
     }

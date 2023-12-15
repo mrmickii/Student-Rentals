@@ -1,7 +1,8 @@
-import React from 'react';
-import {HashLink as Link } from 'react-router-hash-link'
-import { useAuth } from '../Components/AuthContext'; 
+import React, { useState } from 'react';
+import { HashLink as Link } from 'react-router-hash-link';
+import { useAuth } from '../Components/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import ConfirmationDialog from '../Components/ConfirmationDialog';
 import '../CSS/Header.css';
 import logo from '../Images/logo.png';
 import profile from '../Images/citlogo.png';
@@ -9,11 +10,13 @@ import profile from '../Images/citlogo.png';
 const Header = ({ isAdmin, hideUlAndButton, hideUl }) => {
   const { isLoggedIn, logout, user } = useAuth();
   const navigate = useNavigate();
+  const [isLogoutDialogOpen, setLogoutDialogOpen] = useState(false);
 
   const handleProfileClick = () => {
     if (isLoggedIn && user) {
-      const { username, firstName, lastName, phone_number, gender } = user;
+      const { studentId, username, firstName, lastName, phone_number, gender } = user;
       console.log('Clicked on profile. Username:', username);
+      console.log('Student ID:', studentId); 
       console.log('First Name:', firstName);
       console.log('Last Name:', lastName);
       console.log('Number:', phone_number);
@@ -21,6 +24,7 @@ const Header = ({ isAdmin, hideUlAndButton, hideUl }) => {
   
       navigate('/studentaccount', {
         state: {
+          studentId,
           username,
           firstName,
           lastName,
@@ -29,8 +33,20 @@ const Header = ({ isAdmin, hideUlAndButton, hideUl }) => {
         },
       });
     }
+  };  
+
+  const handleLogout = () => {
+    setLogoutDialogOpen(true);
   };
-  
+
+  const handleDialogConfirm = () => {
+    logout();
+    setLogoutDialogOpen(false);
+  };
+
+  const handleDialogClose = () => {
+    setLogoutDialogOpen(false);
+  };
 
   return (
     <header>
@@ -68,14 +84,10 @@ const Header = ({ isAdmin, hideUlAndButton, hideUl }) => {
 
       <div className="nh-side">
         {isLoggedIn ? (
-          <Link to='/logout'>
-            <button onClick={logout}>Logout</button>
-          </Link>
+          <button onClick={handleLogout}>Logout</button>
         ) : (
           isAdmin ? (
-            <Link to='/logout'>
-              <button onClick={logout}>Logout</button>
-            </Link>
+            <button onClick={handleLogout}>Logout</button>
           ) : (
             !hideUlAndButton && (
               <Link to='/login'>
@@ -104,6 +116,13 @@ const Header = ({ isAdmin, hideUlAndButton, hideUl }) => {
           </>
         )}
       </div>
+      
+      <ConfirmationDialog
+        isOpen={isLogoutDialogOpen}
+        onClose={handleDialogClose}
+        onConfirm={handleDialogConfirm}
+        message="Are you sure you want to logout?"
+      />
     </header>
   );
 }

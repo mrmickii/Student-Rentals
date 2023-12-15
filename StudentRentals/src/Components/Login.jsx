@@ -30,8 +30,9 @@ function Login() {
   
       if (response.data) {
         console.log('Login successful:', response.data);
-        const { first_name, last_name, phone_number, username, gender } = response.data;
-        login({ first_name, last_name, phone_number, username, gender });
+        const { student_id, first_name, last_name, phone_number, username, gender } = response.data;
+        login({ student_id, first_name, last_name, phone_number, username, gender });
+        console.log('Student ID:', student_id);
         console.log('First Name:', first_name);
         console.log('Last Name:', last_name);
         console.log('Number:', phone_number);
@@ -42,12 +43,12 @@ function Login() {
         setErrorMessage("Invalid username or password");
         console.error('Login failed: Invalid username or password');
       }
-  
     } catch (error) {
       setErrorMessage("Invalid username or password");
       console.error('Login failed:', error.response?.data || error.message);
     }
   };
+  
   
   const handleAdminLogin = async () => { 
     try {
@@ -99,7 +100,6 @@ function Login() {
               <p className="back">Back</p>
             </div>
           </Link>
-          
           <div className="lgn-container">
             <img
               src={citlogo}
@@ -108,26 +108,36 @@ function Login() {
                 width: "150px",
                 paddingTop: "50px",
                 position: "absolute",
-                top: '10%'
+                top: '5%'
               }}
             />
             <p>Sign In</p>
             <p className="error-message">{errorMessage}</p>
-            <input
+            <input className="username"
               type="text"
               placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <span className="password-toggle" onClick={togglePasswordVisibility}>
-              {showPassword ? <FiEyeOff /> : <FiEye />}
-            </span>
+            <div className="lgn-password-container">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {showPassword ? (
+                <FiEyeOff
+                  className="password-toggle-icon"
+                  onClick={togglePasswordVisibility}
+                />
+              ) : (
+                <FiEye
+                  className="password-toggle-icon"
+                  onClick={togglePasswordVisibility}
+                />
+              )}
+            </div>
             <p className="error-message"></p>
             <button onClick={handleLogin}>Login</button> 
             <button onClick={handleAdminLogin}>Login as Admin</button> {/* Updated line */}

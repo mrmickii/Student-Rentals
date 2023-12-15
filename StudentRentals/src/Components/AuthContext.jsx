@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -10,10 +10,11 @@ export const AuthProvider = ({ children }) => {
     setIsLoggedIn(true);
   
     if (userData) {
-      const { first_name, last_name, gender, phone_number, username } = userData;
+      const { student_id, first_name, last_name, gender, phone_number, username } = userData;
   
-      if (first_name && last_name) {
+      if (student_id && first_name && last_name) {
         setUser({
+          studentId: student_id,
           firstName: first_name,
           lastName: last_name,
           gender: gender || null,

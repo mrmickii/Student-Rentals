@@ -16,7 +16,7 @@ function ConfirmationPage(){
         <img src={cfp} alt="cfp" />
         <Link to='/'>
           <button>
-            <div className="button">
+            <div className="confirmation-btn">
             Back Home
             <box-icon name='right-arrow-alt' color='white'></box-icon>
             </div>

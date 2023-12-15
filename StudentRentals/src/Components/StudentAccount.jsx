@@ -7,12 +7,22 @@ import { Link } from 'react-router-dom';
 function StudentAccount() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { firstName, lastName, username, phone_number, gender } = location.state || {};
+  const { studentId, firstName, lastName, username, phone_number, gender } = location.state || {};
 
   const handleBackClick = () => {
     navigate(-1);
   };
-  console.log('First Name:', firstName, 'Last Name:', lastName, 'Username:', username);
+
+  const handleEditProfileClick = () => {
+    console.log('Student ID:', studentId);
+    console.log('First Name:', firstName);
+    console.log('Last Name:', lastName);
+    console.log('Username:', username);
+    console.log('Number:', phone_number);
+    console.log('Gender:', gender);
+
+    navigate('/editprofile');
+  };
 
   return (
     <>
@@ -35,9 +45,7 @@ function StudentAccount() {
         </div>
         <div className="uptwo">
           <p>Hello, {firstName} {lastName}</p>
-          <Link to='/editprofile'>
-            <button>Edit Profile</button>
-          </Link>
+          <button onClick={handleEditProfileClick}>Edit Profile</button>
         </div>
       </div>
     </>
