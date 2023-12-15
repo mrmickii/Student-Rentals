@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import '../CSS/Notification.css'; 
 import Header from '../Components/Header';
@@ -7,7 +7,10 @@ import Header from '../Components/Header';
 function Notification() {
   const [paymentDetails, setPaymentDetails] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  const { selectedPaymentOption, price } = location.state || {};
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,6 +20,7 @@ function Notification() {
         setPaymentDetails(response.data);
       } catch (error) {
         console.error('Error fetching payment details:', error);
+        setError('Error fetching payment details. Please try again.');
       } finally {
         setLoading(false);
       }
@@ -39,6 +43,8 @@ function Notification() {
         <h2>All Payments</h2>
         {loading ? (
           <p className="loading-message">Loading payment details...</p>
+        ) : error ? (
+          <p className="error-message">{error}</p>
         ) : paymentDetails.length > 0 ? (
           <ul className="payment-list">
             {paymentDetails.map((payment, index) => (
@@ -47,6 +53,10 @@ function Notification() {
                 <p>Payment Method: {payment.paymentmethod}</p>
                 <p>Amount: {payment.amount}</p>
                 <p>Status: {payment.status ? 'Successful' : 'Not Successful'}</p>
+
+                {/* Display selected payment option and price */}
+                <p>Selected Payment Option: {selectedPaymentOption}</p>
+                <p>Price: {price}</p>
               </li>
             ))}
           </ul>

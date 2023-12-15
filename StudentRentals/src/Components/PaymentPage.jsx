@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 import Header from "../Components/Header";
 import ConfirmationDialog from "../Components/ConfirmationDialog";
 import "../CSS/PaymentPage.css";
@@ -29,8 +30,18 @@ function PaymentPage() {
 
   const handleDialogConfirm = () => {
     setConfirmationDialogOpen(false);
-    // Redirect to the confirmation page
-    navigate("/confirmation");
+  
+    // Log the payment option and property data
+    console.log("Selected Payment Option:", selectedPaymentOption);
+    console.log("Property Data:", propertyData);
+  
+    // Navigate to the Notification page with payment details
+    navigate("/notifications", {
+      state: {
+        selectedPaymentOption,
+        price: propertyData.price,
+      },
+    });
   };
 
   const handleDialogClose = () => {
