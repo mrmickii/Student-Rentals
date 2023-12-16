@@ -9,6 +9,7 @@ function Booking() {
   const [lastName, setLastName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [formErrors, setFormErrors] = useState({});
+  const [schoolName, setSchoolName] = useState('');
   const navigate = useNavigate();
   const { propId } = useParams();
   const [propertyData, setPropertyData] = useState({});
@@ -16,32 +17,57 @@ function Booking() {
   const location = useLocation();
   const { propertyData: locationPropertyData } = location.state || {};
 
- const validateForm = () => {
-  if (!firstName.trim() || !lastName.trim() || !phoneNumber.trim()) {
-    setFormErrors({
-      firstName: 'Please fill out all fields.',
-      lastName: 'Please fill out all fields.',
-      phoneNumber: 'Please fill out all fields.',
-    });
-    return false;
-  }
-  return true;
-};
+  const validateForm = () => {
+    if (!firstName.trim() || !lastName.trim() || !phoneNumber.trim() || !schoolName.trim()) {
+      setFormErrors({
+        firstName: 'Please fill out all fields.',
+        lastName: 'Please fill out all fields.',
+        phoneNumber: 'Please fill out all fields.',
+        schoolName: 'Please fill out all fields.',
+      });
+      return false;
+    }
+    return true;
+  };
   
   const handleBackClick = () => {
     navigate(-1);
   };
 
-  const handleSaveClick = () => {
+  const handleSaveClick = async () => {
     const isFormValid = validateForm();
   
     if (isFormValid) {
-      navigate(`/payment/${propId}`, { state: { propertyData } });
-    } else {
+      const dataToPass = {
+        firstName,
+        lastName,
+        phoneNumber,
+        schoolName,
+        propertyName: propertyData.name, 
+        propertyData,
+      };
+      
+      navigate(`/payment/${propId}`, {
+        state: {
+          dataFromBooking: dataToPass,
+          propertyData, 
+        },
+      });
+      
+      await saveBookingDataToBackend(dataToPass);
+      
       console.log('Form has errors. Please check the fields.');
     }
   };
-   
+  
+  const saveBookingDataToBackend = async (bookingData) => {
+    try {
+      const response = await axios.post('http://localhost:8080/booking/insertBooking', bookingData);
+      console.log('Booking data saved successfully:', response.data);
+    } catch (error) {
+      console.error('Error saving booking data:', error.response);
+    }
+  };  
  
   useEffect(() => {
     const fetchData = async () => {
@@ -60,7 +86,6 @@ function Booking() {
         setLoading(false);
       }
     };
-
     if (locationPropertyData) {
       setPropertyData(locationPropertyData);
       setLoading(false);
@@ -104,14 +129,17 @@ function Booking() {
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
           />
+          <input 
+            type="text" 
+            placeholder="School Name" 
+            value={schoolName}
+            onChange={(e) => setSchoolName(e.target.value)}
+          />
           <p className="error-message">
             {formErrors.firstName && <span>{formErrors.firstName}</span>}
             {formErrors.lastName && <span>{formErrors.lastName}</span>}
             {formErrors.phoneNumber && <span>{formErrors.phoneNumber}</span>}
           </p>
-
-
-
 
           <div className="bcls-button">
             <button onClick={handleSaveClick}>Save</button>

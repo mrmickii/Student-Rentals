@@ -15,14 +15,14 @@ function Notification() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/notification/notificationPayment');
+        const response = await axios.get('http://localhost:8080/studentrentals/notificationPayment');
         console.log('API Response:', response.data);
         setPaymentDetails(response.data);
       } catch (error) {
         console.error('Error fetching payment details:', error);
-        setError('Error fetching payment details. Please try again.');
+        setError(`Error fetching payment details. ${error.message}`);
       } finally {
-        setLoading(false);
+          setLoading(false);
       }
     };
     fetchData();
@@ -35,7 +35,7 @@ function Notification() {
   return (
     <div>
       <Header hideUl={true} />
-      <div className="back-container" onClick={handleBackClick} style={{cursor: 'pointer'}}>
+      <div className="back-container" onClick={handleBackClick} style={{ cursor: 'pointer' }}>
         <box-icon name='arrow-back' size='md'></box-icon>
         <p className="back">Back</p>
       </div>
@@ -49,14 +49,11 @@ function Notification() {
           <ul className="payment-list">
             {paymentDetails.map((payment, index) => (
               <li key={index} className="payment-item">
-                <h3>Payment Details: {payment.paymentid}</h3>
-                <p>Payment Method: {payment.paymentmethod}</p>
-                <p>Amount: {payment.amount}</p>
+                <h3>Payment Details: {payment.paymentId}</h3>
+                {payment.selectedPaymentOption && <p>Selected Payment Option: {payment.selectedPaymentOption}</p>}
+                {payment.price && <p>Price: {payment.price}</p>}
                 <p>Status: {payment.status ? 'Successful' : 'Not Successful'}</p>
-
-                {/* Display selected payment option and price */}
-                <p>Selected Payment Option: {selectedPaymentOption}</p>
-                <p>Price: {price}</p>
+                {payment.property && <p>Property Name: {payment.property.name}</p>}
               </li>
             ))}
           </ul>

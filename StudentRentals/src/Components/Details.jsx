@@ -127,7 +127,7 @@ const handleSubmit = async () => {
           <div>
               <h2>Comments:</h2>
           </div>
-          <div class="comments-container">
+          <div className="comments-container">
             {comments.map((comment, index) => (
               <div key={index} className="comments">
                 <strong>Anonymous</strong>

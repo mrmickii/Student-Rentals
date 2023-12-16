@@ -1,47 +1,72 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
 import Header from "../Components/Header";
 import ConfirmationDialog from "../Components/ConfirmationDialog";
+import axios from "axios"; 
 import "../CSS/PaymentPage.css";
-import gcash from '../Images/icons8-gcash-100.png'
+import gcash from '../Images/icons8-gcash-100.png';
 import walkin from "../Images/walk-in.png";
 
 function PaymentPage() {
   const navigate = useNavigate();
   const location = useLocation();
-  const propertyData = location.state ? location.state.propertyData : null;
+  const propertyDataFromBooking = location.state ? location.state.propertyData : null;
+  const { dataFromBooking } = location.state || {};
 
-  if (!propertyData) {
-    navigate("/");
-    return null;
-  }
+  const [selectedPaymentOption, setSelectedPaymentOption] = useState(null);
+  const [isConfirmationDialogOpen, setConfirmationDialogOpen] = useState(false);
+  const [propertyName, setPropertyName] = useState("");
 
   const handleBackClick = () => {
     navigate(-1);
   };
 
-  const [selectedPaymentOption, setSelectedPaymentOption] = useState(null);
-  const [isConfirmationDialogOpen, setConfirmationDialogOpen] = useState(false);
-
-  const handleConfirmClick = () => {
-    setConfirmationDialogOpen(true);
-  };
+  useEffect(() => {
+    if (propertyDataFromBooking) {
+      setPropertyName(propertyDataFromBooking.name);
+    }
+  }, [propertyDataFromBooking]);
 
   const handleDialogConfirm = () => {
     setConfirmationDialogOpen(false);
   
-    // Log the payment option and property data
-    console.log("Selected Payment Option:", selectedPaymentOption);
-    console.log("Property Data:", propertyData);
+    const paymentData = {
+      selectedPaymentOption: selectedPaymentOption,
+      price: propertyDataFromBooking.price,
+    };
   
-    // Navigate to the Notification page with payment details
-    navigate("/notifications", {
-      state: {
-        selectedPaymentOption,
-        price: propertyData.price,
-      },
-    });
+    axios
+      .post("http://localhost:8080/studentrentals/insertPayment", paymentData)
+      .then((paymentResponse) => {
+        console.log("Payment data sent successfully:", paymentResponse.data);
+  
+        const bookingData = {
+          firstName: dataFromBooking.firstName,
+          lastName: dataFromBooking.lastName,
+          number: dataFromBooking.phoneNumber,
+          school: dataFromBooking.schoolName,
+          propertyName: propertyDataFromBooking.name,
+        };
+  
+        return axios.post("http://localhost:8080/studentrentals/insertBooking", bookingData);
+      })
+      .then((bookingResponse) => {
+        console.log("Booking data sent successfully:", bookingResponse.data);
+        navigate("/confirmation", {
+          state: {
+            selectedPaymentOption,
+            price: propertyDataFromBooking.price,
+            propertyName,
+          },
+        });
+      })
+      .catch((error) => {
+        console.error("Error sending payment/booking data:", error);
+      });
+  };
+
+  const handleConfirmButtonClick = () => {
+    setConfirmationDialogOpen(true);
   };
 
   const handleDialogClose = () => {
@@ -61,22 +86,22 @@ function PaymentPage() {
           <label>
             <input
               type="radio"
-              value="walk-in"
-              checked={selectedPaymentOption === "walk-in"}
-              onChange={() => setSelectedPaymentOption("walk-in")}
+              value="Walk-in"
+              checked={selectedPaymentOption === "Walk-in"}
+              onChange={() => setSelectedPaymentOption("Walk-in")}
             />
             Walk-in Payment
           </label>
           <label>
             <input
               type="radio"
-              value="online"
-              checked={selectedPaymentOption === "online"}
-              onChange={() => setSelectedPaymentOption("online")}
+              value="Online"
+              checked={selectedPaymentOption === "Online"}
+              onChange={() => setSelectedPaymentOption("Online")}
             />
             Online Payment
           </label>
-          {selectedPaymentOption === "online" && (
+          {selectedPaymentOption === "Online" && (
             <label className="gcash-info">
               <p>Enter Gcash Information</p>
               <input type="text" placeholder="Gcash Number" />
@@ -90,27 +115,21 @@ function PaymentPage() {
         </div>
 
         <div className="payment-body-right">
-          {selectedPaymentOption === "walk-in" && (
+          {selectedPaymentOption === "Walk-in" && (
             <div className="walk-in">
               <h3>Walk-in Payment Details</h3>
               <p>Visit our office for walk-in payment.</p>
               <img src={walkin} alt="walk-in" style={{ width: '200px', height: '200px' }} />
             </div>
           )}
-          {selectedPaymentOption === "online" && (
+          {selectedPaymentOption === "Online" && (
             <div className="online">
-              <div>
-                <h1>PRICE DETAILS</h1>
-                <p>
-                  Price:
-                  <span> ₱{propertyData.price}</span>
-                </p>
-                <hr />
-                <p>
-                  Total Amount:
-                  <span> ₱{propertyData.price}</span>
-                </p>
-                <button onClick={handleConfirmClick}>
+            <div>
+              <h1>PRICE DETAILS</h1>
+              <p><strong>Price:</strong> ₱{propertyDataFromBooking.price}</p>
+              <hr />
+              <p><strong>Total Amount:</strong> ₱{propertyDataFromBooking.price}</p>
+              <button onClick={handleConfirmButtonClick}>
                   Confirm
                   <box-icon name='right-arrow-alt' color='white'></box-icon>
                 </button>
@@ -123,7 +142,7 @@ function PaymentPage() {
         isOpen={isConfirmationDialogOpen}
         onClose={handleDialogClose}
         onConfirm={handleDialogConfirm}
-        message="Are you sure you want to confirm the payment?"
+        message={`Are you sure you want to confirm the payment for ${propertyName}?`}
       />
     </>
   );
