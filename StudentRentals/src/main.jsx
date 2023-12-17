@@ -11,7 +11,9 @@ import Logout from './Components/Logout';
 import Admin from './Components/Admin';
 import UpdateProperty from './Components/UpdateProperty';
 import DeleteProperty from './Components/DeleteProperty';
+import GetProperty from './Components/GetProperty';
 import DeleteStudent from './Components/DeleteStudent';
+import GetStudent from './Components/GetStudent';
 import EditProfile from './Components/EditProfile';
 import Notification from './Components/Notification';
 import Booking from './Components/Booking';
@@ -29,6 +31,7 @@ root.render(
         <Route exact path='/addproperty' element={<AddProperty />} />
         <Route exact path='/updateproperty' element={<UpdateProperty />} />
         <Route exact path='/deleteproperty' element={<DeleteProperty />} />
+        <Route exact path='/getproperty' element={<GetProperty />} />
         <Route exact path='/deletestudent' element={<DeleteStudent />} />
         <Route exact path='/login' element={<Login />} />
         <Route exact path='/logout' element={<Logout />} />
@@ -36,6 +39,7 @@ root.render(
         <Route exact path='/admin' element={<Admin />} />
         <Route exact path='/details/:propId' element={<Details />} />
         <Route exact path='/studentaccount' element={<StudentAccount />} /> 
+        <Route exact path='/getstudent' element={<GetStudent />} />
         <Route exact path='/editprofile' element={<EditProfile />} /> 
         <Route exact path='/notifications' element={<Notification />} /> 
         <Route exact path='/booking/:propId' element={<Booking />} /> 

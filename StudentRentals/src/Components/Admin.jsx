@@ -14,8 +14,10 @@ function Admin() {
         <Link to='/addproperty'><button>Add a Property</button></Link>
         <Link to='/updateproperty'><button>Update a Property</button></Link>
         <Link to='/deleteproperty'><button>Delete a Property</button></Link>
+        <Link to='/getproperty'><button>Display all Property</button></Link>
         <h1>STUDENT</h1>
         <Link to='/deletestudent'><button>Delete a Student</button></Link>
+        <Link to='/getstudent'><button>Display all Student</button></Link>
       </div>
     </>
   );
