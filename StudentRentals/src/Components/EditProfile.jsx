@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import Header from "../Components/Header";
-import ConfirmationDialog from "../Components/ConfirmationDialog"; // Import the existing ConfirmationDialog
+import ConfirmationDialog from "../Components/ConfirmationDialog"; 
 import { useNavigate } from "react-router-dom";
 import "../CSS/EditProfile.css";
 import { AuthContext } from "../Components/AuthContext";
@@ -41,22 +41,33 @@ function EditProfile() {
   };
 
   const handleSaveClick = () => {
+    // Check if any required field is empty
+    if (!student.first_name || !student.last_name || !student.phone_number || !student.password) {
+      setError("Please fill in all required fields.");
+      return;
+    }
+  
     setConfirmationMessage("Are you sure you want to save the changes?");
     setSaveDialogOpen(true);
   };
-
+  
   const handleSaveConfirm = async () => {
     setSaveDialogOpen(false);
   
     try {
+      if (!student.first_name || !student.last_name || !student.phone_number || !student.password) {
+        setError("Please fill in all required fields.");
+        return;
+      }
+  
       const { username, ...updateData } = student;
       await axios.put(
         `http://localhost:8080/studentrentals/updateStudent/${updateData.student_id}`,
         updateData
       );
-      console.log("Student information updated successfully!");
+      console.log("Student information updated successfully! Logout to see changes.");
       setError("");
-      setSuccessMessage("Profile updated successfully!");
+      setSuccessMessage("Profile updated successfully! Logout to see changes.");
   
       setStudent({
         student_id: user.studentId,
@@ -71,6 +82,7 @@ function EditProfile() {
       setError("Error updating student. Please try again.");
     }
   };
+  
 
   const handleSaveCancel = () => {
     setSaveDialogOpen(false);

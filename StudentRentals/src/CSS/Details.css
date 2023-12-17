@@ -75,8 +75,16 @@
   border: none;
   border-radius: 20px;
 }
-
+.comment-section-container{
+  display: flex;
+  gap: 50px;
+}
+.comment-section-container h2{
+  margin-top: 50px;
+}
 .comments-section {
+  display: flex;
+  flex-direction: column;
   margin-top: 50px;
 }
 .textarea {
@@ -86,19 +94,20 @@
   height: 100px;
   resize: none;
 }
-
-.button {
-  margin-top: 10px;
+.comments-section button {
+  margin-top: 20px;
   margin-bottom: 50px;
   padding: 10px 50px;
   background-color: #f28500;
   color: white;
   border: none;
   border-radius: 20px;
+  width: 300px;
 }
 
 .comments-container {
   display: flex;
+  margin-top: 50px;
 }
 
 .comments {

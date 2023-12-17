@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../CSS/UpdateProperty.css';
 import Header from './Header';
-import ConfirmationDialog from './ConfirmationDialog'; // Import the ConfirmationDialog component
+import ConfirmationDialog from './ConfirmationDialog'; 
 
 function UpdateProperty() {
   const [updateMessage, setUpdateMessage] = useState('');
@@ -18,7 +18,6 @@ function UpdateProperty() {
     numbeds: '',
   });
 
-  // State for the confirmation dialog
   const [isDialogOpen, setDialogOpen] = useState(false);
 
   const handleFileChange = (e) => {
@@ -42,22 +41,18 @@ function UpdateProperty() {
     });
   };
 
-  // Function to open the confirmation dialog
   const handleOpenDialog = () => {
     setDialogOpen(true);
   };
 
-  // Function to close the confirmation dialog
   const handleCloseDialog = () => {
     setDialogOpen(false);
   };
 
   const handleSubmit = async () => {
-    // Open the confirmation dialog before submitting
     handleOpenDialog();
   };
 
-  // Function to handle the confirmation (after the user clicks "Confirm" in the dialog)
   const handleConfirmSubmit = async () => {
     setDialogOpen(false);
 

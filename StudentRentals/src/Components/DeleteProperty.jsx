@@ -2,33 +2,29 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Header from './Header';
-import ConfirmationDialog from './ConfirmationDialog'; // Import the ConfirmationDialog component
+import ConfirmationDialog from './ConfirmationDialog'; 
 import '../CSS/DeleteProperty.css';
 
 function DeleteProperty() {
   const [propertyId, setPropertyId] = useState('');
   const [deleteMessage, setDeleteMessage] = useState('');
   const [propertyData, setPropertyData] = useState([]);
-
-  // State for the confirmation dialog
   const [isDialogOpen, setDialogOpen] = useState(false);
 
   const handleInputChange = (e) => {
     setPropertyId(e.target.value);
   };
 
-  // Function to open the confirmation dialog
   const handleOpenDialog = () => {
     setDialogOpen(true);
   };
 
-  // Function to close the confirmation dialog
   const handleCloseDialog = () => {
     setDialogOpen(false);
   };
 
   const handleDelete = async () => {
-    setDialogOpen(false); // Close the confirmation dialog
+    setDialogOpen(false); 
 
     try {
       const response = await axios.delete(`http://localhost:8080/studentrentals/deleteProperty/${propertyId}`);
@@ -53,7 +49,6 @@ function DeleteProperty() {
   };
 
   useEffect(() => {
-    // Fetch property data when the component mounts
     fetchPropertyData();
   }, []);
 
@@ -111,7 +106,6 @@ function DeleteProperty() {
         </div>
       </div>
 
-      {/* ConfirmationDialog component */}
       <ConfirmationDialog
         isOpen={isDialogOpen}
         onClose={handleCloseDialog}

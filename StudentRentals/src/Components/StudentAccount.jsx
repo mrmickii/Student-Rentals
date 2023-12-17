@@ -2,7 +2,6 @@ import React from "react";
 import '../CSS/StudentAccount.css';
 import Header from "./Header";
 import { useNavigate, useLocation } from 'react-router-dom'; 
-import { Link } from 'react-router-dom';
 
 function StudentAccount() {
   const navigate = useNavigate();

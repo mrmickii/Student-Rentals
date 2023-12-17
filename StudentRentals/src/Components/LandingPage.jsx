@@ -21,28 +21,28 @@ function LandingPage() {
   const [propertyTypes, setPropertyTypes] = useState([]);
   const [propertyAddresses, setPropertyAddresses] = useState([]);
 
-  useEffect(() => {
-    const fetchPropertyData = async () => {
-      try {
-        console.log('Fetching property data...');
-        const response = await axios.get('http://localhost:8080/studentrentals/getAllProperty');
-        setPropertyData(response.data);
-        setFilteredData(response.data); 
-        setLoading(false);
-        console.log('Property data fetched successfully:', response.data);
+    useEffect(() => {
+      const fetchPropertyData = async () => {
+        try {
+          console.log('Fetching property data...');
+          const response = await axios.get('http://localhost:8080/studentrentals/getAllProperty');
+          setPropertyData(response.data);
+          setFilteredData(response.data); 
+          setLoading(false);
+          console.log('Property data fetched successfully:', response.data);
 
-        const uniqueTypes = Array.from(new Set(response.data.map(property => property.type)));
-        setPropertyTypes(uniqueTypes);
+          const uniqueTypes = Array.from(new Set(response.data.map(property => property.type)));
+          setPropertyTypes(uniqueTypes);
 
-        const uniqueAddresses = Array.from(new Set(response.data.map(property => property.address)));
-        setPropertyAddresses(uniqueAddresses);
-      } catch (error) {
-        console.error('Error fetching property data:', error.response);
-        setLoading(false);
-      }
-    };
-    fetchPropertyData();
-  }, []);
+          const uniqueAddresses = Array.from(new Set(response.data.map(property => property.address)));
+          setPropertyAddresses(uniqueAddresses);
+        } catch (error) {
+          console.error('Error fetching property data:', error.response);
+          setLoading(false);
+        }
+      };
+      fetchPropertyData();
+    }, []);
 
   const handleSearch = () => {
     const filtered = propertyData.filter(property => {
@@ -134,8 +134,9 @@ function LandingPage() {
               >
                 <div className="property-item">
                   <img
-                    src={`http://localhost:8080/property-images/${property.propid}`}
-                    alt={property.name}
+                    src={`data:image/${property.imageType};base64, ${property.images}`}
+                    alt={`Image of ${property.name}`}
+                    style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'cover' }}
                   />
                   <h2>{property.name}</h2>
                   <h4>
