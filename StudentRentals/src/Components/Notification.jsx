@@ -51,7 +51,7 @@ function Notification() {
               <li key={index} className="payment-item">
                 <h3>Payment Details: {payment.paymentId}</h3>
                 {payment.selectedPaymentOption && <p>Selected Payment Option: {payment.selectedPaymentOption}</p>}
-                {payment.price && <p>Price: {payment.price}</p>}
+                {payment.price && <p>Price: ₱{payment.price}</p>}
                 <p>Status: {payment.status ? 'Successful' : 'Not Successful'}</p>
                 {payment.property && <p>Property Name: {payment.property.name}</p>}
               </li>

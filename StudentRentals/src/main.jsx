@@ -45,7 +45,6 @@ root.render(
         <Route exact path='/booking/:propId' element={<Booking />} /> 
         <Route exact path='/payment/:propId' element={<PaymentPage />} />
         <Route exact path='/confirmation' element={<ConfirmationPage />} />
-        
         <Route exact path='/insertBooking' element={<Booking />} />
       </Routes>
     </Router>
